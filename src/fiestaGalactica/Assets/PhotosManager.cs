@@ -1,35 +1,45 @@
 ﻿using System.Collections;
+using System.IO;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PhotosManager : MonoBehaviour {
 
-	public List<Texture2D> photos;
+	public List<string> files;
 
-	string pathPrefix = @"file://";
-	string pathImageAssets = @"C:\fiestaGalactica\";
-	string pathSmall = @"images\";
-	string filename = @"a.png";
+	string charactersPath;
 
 	void Start()
 	{
-		LoadImages ();
+		charactersPath = Application.streamingAssetsPath + "/characters/";
+		GetAllFiles ();
+		Invoke ("all", 1);
 	}
-	private void LoadImages()
+	void all()
 	{
-		Events.Log ("LoadImages");
-		string fullFilename = pathPrefix + pathImageAssets + pathSmall + filename;
-		StartCoroutine( StartLoading(fullFilename));
+		Events.Log("Son: " + files.Count);
 	}
+	void GetAllFiles()
+	{
+		foreach(string file in Utils.GetAllFilesIn(charactersPath))
+		{
+			files.Add (file);
+			StartCoroutine( LoadSprite(file));
+		}
+	}
+	public IEnumerator LoadSprite(string absoluteImagePath)
+	{
+		string      finalPath;
+		WWW         localFile;
+		Texture     texture;
+		Sprite      sprite;
 
-	IEnumerator StartLoading(string fullFilename)
-	{
-		Texture2D tex;
-		tex = new Texture2D(256, 256, TextureFormat.DXT1, false);
-		WWW www = new WWW(fullFilename);
-		yield return www;
-		www.LoadImageIntoTexture(tex);
-		photos.Add (tex);
+		finalPath = "file://" + absoluteImagePath;
+		localFile = new WWW(finalPath);
+
+		yield return localFile;
+
+		Events.OnNewFile (localFile);
 	}
 
 }

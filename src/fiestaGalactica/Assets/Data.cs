@@ -2,12 +2,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using System;
 
 public class Data : MonoBehaviour
 {
 
     const string PREFAB_PATH = "Data";    
     static Data mInstance = null;
+
+	[HideInInspector]
 	public PhotosManager photosManager;
 
     public static Data Instance
@@ -49,4 +52,5 @@ public class Data : MonoBehaviour
 
 		photosManager = GetComponent<PhotosManager> ();
     }
+
 }
