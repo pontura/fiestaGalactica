@@ -7,5 +7,7 @@ public static class Events {
 	public static System.Action<string> Log = delegate { };
 	public static System.Action OnGameOver = delegate { };
 	public static System.Action<WWW> OnNewFile = delegate { };
+	public static System.Action OnPhotoTaken= delegate { };
+	public static System.Action<int> ChangeStyle = delegate { };
 
 }
