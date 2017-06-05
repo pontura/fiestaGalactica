@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CharactersManager : MonoBehaviour {
 
+	public Transform container;
 	public Character astronauta;
 	public Character alien1;
 	public Character alien2;
@@ -47,6 +48,9 @@ public class CharactersManager : MonoBehaviour {
 			newCharacter.info.type = CharacterInfo.types.ALIEN3;
 			break;
 		}
+
+		newCharacter.transform.SetParent (container);
+		newCharacter.transform.position = new Vector3 (0, 0, -5);
 
 		Texture2D texture = file.texture;
 		Sprite sprite = Sprite.Create(texture as Texture2D, new Rect(0, 0, texture.width, texture.height), Vector2.zero);
