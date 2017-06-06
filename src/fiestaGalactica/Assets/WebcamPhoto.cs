@@ -5,7 +5,7 @@ using System.IO;
 
 public class WebcamPhoto : MonoBehaviour
 {
-	public Texture2D lastPhotoTexture;
+	public Texture2D photoTexture;
 	WebCamTexture webCamTexture;
 	private Animation anim;
 
@@ -16,10 +16,15 @@ public class WebcamPhoto : MonoBehaviour
 
 	void Start()
 	{
+		Events.CreatorReset += CreatorReset;
 		anim = GetComponent<Animation> ();
-		lastPhotoTexture = null;
 		webCamTexture = new WebCamTexture(WebCamTexture.devices[WebCamTexture.devices.Length-1].name, 800, 600, 12);
-
+		CreatorReset ();
+	}
+	void CreatorReset()
+	{
+		photoTexture = null;
+		anim.Play ("Idle");
 		if (webCamTexture.isPlaying)
 			webCamTexture.Stop();
 		else
@@ -29,10 +34,6 @@ public class WebcamPhoto : MonoBehaviour
 
 		rawImage.transform.localScale = scale;
 		rawImage.material.mainTexture = webCamTexture;
-	}
-	void Update()
-	{
-
 	}
 	void Ready()
 	{
@@ -45,9 +46,9 @@ public class WebcamPhoto : MonoBehaviour
 	public void TakePhoto()
 	{
 		photoTaken = true;
-		lastPhotoTexture = new Texture2D(webCamTexture.width, webCamTexture.height);
-		lastPhotoTexture.SetPixels(webCamTexture.GetPixels());
-		lastPhotoTexture.Apply();
+		photoTexture = new Texture2D(webCamTexture.width, webCamTexture.height);
+		photoTexture.SetPixels(webCamTexture.GetPixels());
+		photoTexture.Apply();
 		webCamTexture.Stop();
 		Events.OnPhotoTaken ();
 		anim.Play ("ZoomOut");
