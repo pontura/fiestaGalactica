@@ -5,13 +5,17 @@ using UnityEngine;
 
 public class PhotosManager : MonoBehaviour {
 
+	public string PHOTOS_URL;
 	public List<string> files;
-
-	string charactersPath;
+	public List<string> imagesLoaded;
 
 	void Start()
 	{
-		charactersPath = Application.streamingAssetsPath + "/characters/";
+		if(Data.Instance.build == Data.builds.DEBUG)
+			PHOTOS_URL = "http://pontura.com/fiesta/";
+		else
+			PHOTOS_URL = "http://pontura.com/fiesta/";
+		
 		GetAllFiles ();
 		Invoke ("all", 1);
 	}
@@ -21,25 +25,68 @@ public class PhotosManager : MonoBehaviour {
 	}
 	void GetAllFiles()
 	{
-		foreach(string file in Utils.GetAllFilesIn(charactersPath))
+		Events.Log("Getting files");
+		var url = PHOTOS_URL + "load.php";
+		WWW www = new WWW(url);
+		StartCoroutine(WaitForRequest(www));
+	}
+
+	IEnumerator WaitForRequest(WWW www)
+	{
+		yield return www;
+		if (www.error == null)
 		{
-			files.Add (file);
-			StartCoroutine( LoadSprite(file));
+			ParseData ( www.data);
+		} else {
+			Debug.Log("WWW Error: "+ www.error);
+		}    
+	}
+	void ParseData(string data)
+	{
+		Events.Log("Data Server Received");
+		string[] imageData = data.Split ("-"[0]);
+		foreach (string imageName in imageData) {
+			if (imageName.Length > 1) {
+				string file = (PHOTOS_URL + "photos/" + imageName);
+				StartCoroutine(LoadSprite(file, imageName));
+			}
 		}
 	}
-	public IEnumerator LoadSprite(string absoluteImagePath)
+	public IEnumerator LoadSprite(string absoluteImagePath, string imageName)
 	{
-		string      finalPath;
-		WWW         localFile;
-		Texture     texture;
-		Sprite      sprite;
+		Events.Log("LoadSprite " + absoluteImagePath);
 
-		finalPath = "file://" + absoluteImagePath;
-		localFile = new WWW(finalPath);
+		if (!fileWasLoaded (imageName)) {
+		
+			imagesLoaded.Add (imageName);
 
-		yield return localFile;
+			string finalPath;
+			WWW localFile;
+			Texture texture;
+			Sprite sprite;
 
-		Events.OnNewFile (localFile);
+			finalPath = absoluteImagePath;
+			localFile = new WWW (finalPath);
+
+			yield return localFile;
+
+			Events.OnNewFile (localFile);
+
+			if (Data.Instance.build != Data.builds.DEBUG) {
+				var url = PHOTOS_URL + "deleteImage.php?imageName=" + imageName;
+				WWW www = new WWW (url);
+				Debug.Log ("Delete: " + imageName);
+			}
+		} else {
+			yield return null;
+		}
+	}
+	bool fileWasLoaded(string imageName)
+	{
+		foreach (string oldImageName in imagesLoaded)
+			if (oldImageName == imageName)
+				return true;
+		return false;
 	}
 
 }

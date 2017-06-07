@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class CharacterInfo : MonoBehaviour {
 
-	public Sprite sprite;
+	[HideInInspector]
+	public Texture2D texture2d;
 
 	public types type;
 	public enum types

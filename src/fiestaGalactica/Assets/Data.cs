@@ -6,6 +6,12 @@ using System;
 
 public class Data : MonoBehaviour
 {
+	public builds build;
+	public enum builds
+	{
+		RELEASE,
+		DEBUG
+	}
 
     const string PREFAB_PATH = "Data";    
     static Data mInstance = null;

@@ -23,6 +23,7 @@ public class CharactersManager : MonoBehaviour {
 		int characterID = int.Parse(data[1]);
 		int style1 = int.Parse(data[2]);
 		int style2 = int.Parse(data[3]);
+		//int style2 = int.Parse(data[3]);
 
 		OnAddCharacter (file, characterID, style1, style2);
 	}
@@ -53,12 +54,12 @@ public class CharactersManager : MonoBehaviour {
 		newCharacter.transform.position = new Vector3 (0, 0, -5);
 
 		Texture2D texture = file.texture;
-		Sprite sprite = Sprite.Create(texture as Texture2D, new Rect(0, 0, texture.width, texture.height), Vector2.zero);
+		//Sprite sprite = Sprite.Create(texture as Texture2D, new Rect(0, 0, texture.width, texture.height), Vector2.zero);
 
 		if (newCharacter != null) {
 			newCharacter.info.styleHead = style1;
 			newCharacter.info.styleBody = style2;
-			newCharacter.info.sprite = sprite;
+			newCharacter.info.texture2d = texture;
 
 			newCharacter.Init ();
 		} else {

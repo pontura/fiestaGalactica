@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class Character : MonoBehaviour {
 
-	public CharacterInfo info;
-	public SpriteRenderer head;
+	[HideInInspector]
 	public Camera c;
+
+	public CharacterInfo info;
+	public MeshRenderer head;
+	public CharacterStyles styles;
 
 	void Start()
 	{
@@ -14,7 +17,8 @@ public class Character : MonoBehaviour {
 	}
 	public void Init()
 	{
-		head.sprite = info.sprite;
+		styles.Change (info.styleHead, info.styleBody);
+		head.material.mainTexture = info.texture2d;
 	}
 	void Update()
 	{

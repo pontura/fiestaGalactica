@@ -10,7 +10,7 @@ public class CharacterCreator : MonoBehaviour {
 		Events.ChangeStyle += ChangeStyle;
 	}
 
-	void ChangeStyle (int id) {
-		styles.Change (id);
+	void ChangeStyle (int id, int id2) {
+		styles.Change (id, id2);
 	}
 }

@@ -9,7 +9,9 @@ public class Creator : MonoBehaviour {
 	public GameObject styles;
 	public GameObject done;
 
+	public int characterID;
 	public int id;
+	public int id2;
 	public int totalStyles;
 	public WebcamPhoto webcamPhoto;
 	int screen_Shot_Count = 0;
@@ -39,14 +41,28 @@ public class Creator : MonoBehaviour {
 		id++;
 		if (id > totalStyles)
 			id = 1;
-		Events.ChangeStyle (id);
+		Events.ChangeStyle (id, id2);
 	}
 	public void Prev()
 	{
 		id--;
 		if (id < 1)
 			id = totalStyles;
-		Events.ChangeStyle (id);
+		Events.ChangeStyle (id, id2);
+	}
+	public void Next2()
+	{
+		id2++;
+		if (id2 > totalStyles)
+			id2 = 1;
+		Events.ChangeStyle (id, id2);
+	}
+	public void Prev2()
+	{
+		id2--;
+		if (id2 < 1)
+			id2 = totalStyles;
+		Events.ChangeStyle (id, id2);
 	}
 
 	IEnumerator UploadPNG()
@@ -60,7 +76,7 @@ public class Creator : MonoBehaviour {
 		Object.Destroy(tex);
 		screen_Shot_Count++;
 
-		string file_Name = System.DateTime.Now.ToString("yyyyMMddhhmmss") + ".png";
+		string file_Name = System.DateTime.Now.ToString("yyyyMMddhhmmss") + "_" + characterID + "_" + id + "_" + id2 + ".png";
 		var fileName = Application.dataPath + "/" + file_Name;
 
 		//File.WriteAllBytes(fileName, bytes);
