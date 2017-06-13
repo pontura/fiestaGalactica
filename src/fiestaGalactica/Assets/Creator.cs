@@ -86,8 +86,6 @@ public class Creator : MonoBehaviour {
 		form.AddField("imageName", file_Name);
 		form.AddBinaryData("fileToUpload", bytes);
 
-		// Upload to a cgi script
-		//WWW w = new WWW("http://localhost/cgi-bin/env.cgi?post", form);
 		WWW w = new WWW("http://www.pontura.com/fiesta/upload.php", form);
 		yield return w;
 
