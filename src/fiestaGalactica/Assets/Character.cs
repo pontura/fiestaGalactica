@@ -10,6 +10,7 @@ public class Character : MonoBehaviour {
 	public CharacterInfo info;
 	public MeshRenderer head;
 	public CharacterStyles styles;
+	public string url;
 
 	void Start()
 	{

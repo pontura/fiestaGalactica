@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PhotosManager : MonoBehaviour {
 
+	public int totalImages;
 	public string PHOTOS_URL;
 	public List<string> files;
 	public List<string> imagesLoaded;
@@ -16,12 +17,12 @@ public class PhotosManager : MonoBehaviour {
 		else
 			PHOTOS_URL = "http://pontura.com/fiesta/";
 		
-		GetAllFiles ();
-		Invoke ("all", 1);
+		Invoke ("Loop", 0.1f);
 	}
-	void all()
+	void Loop()
 	{
-		Events.Log("Son: " + files.Count);
+		GetAllFiles ();
+		Invoke ("Loop", 2);
 	}
 	void GetAllFiles()
 	{
@@ -59,6 +60,10 @@ public class PhotosManager : MonoBehaviour {
 		if (!fileWasLoaded (imageName)) {
 		
 			imagesLoaded.Add (imageName);
+			if (imagesLoaded.Count > totalImages) {
+				Events.OnRemoveCharacters();
+				imagesLoaded.RemoveAt (0);
+			}
 
 			string finalPath;
 			WWW localFile;
@@ -69,6 +74,8 @@ public class PhotosManager : MonoBehaviour {
 			localFile = new WWW (finalPath);
 
 			yield return localFile;
+
+			print (imageName + " ___  " + localFile.url);
 
 			Events.OnNewFile (localFile);
 
