@@ -18,7 +18,7 @@ public class WebcamPhoto : MonoBehaviour
 	{
 		Events.CreatorReset += CreatorReset;
 		anim = GetComponent<Animation> ();
-		webCamTexture = new WebCamTexture(WebCamTexture.devices[WebCamTexture.devices.Length-1].name, 800, 600, 12);
+		webCamTexture = new WebCamTexture(WebCamTexture.devices[WebCamTexture.devices.Length-1].name, 400, 300, 12);
 		CreatorReset ();
 	}
 	void CreatorReset()

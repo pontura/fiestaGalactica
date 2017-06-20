@@ -27,6 +27,7 @@ public class Creator : MonoBehaviour {
 	{
 		startingUI.SetActive (false);
 		styles.SetActive (true);
+		StartCoroutine (Test ());
 	}
 	public void Create()
 	{
@@ -35,7 +36,26 @@ public class Creator : MonoBehaviour {
 		startingUI.SetActive (false);
 		styles.SetActive (false);
 		done.SetActive (false);
+
 	}
+
+	IEnumerator Test()
+	{
+		Debug.Log ("AA");
+		WWWForm form = new WWWForm();
+		WWW w = new WWW("http://127.0.0.1/runner/index.php", new byte[]{0});
+		yield return w;
+		if (w.error != null)
+		{
+			Debug.Log(w.error);
+		}
+		else
+		{
+			Debug.Log("Borra=");
+			Done ();
+		}
+	}
+
 	public void Next()
 	{
 		id++;

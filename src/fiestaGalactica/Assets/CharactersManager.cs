@@ -13,11 +13,14 @@ public class CharactersManager : MonoBehaviour {
 	public Character alien2;
 	public Character alien3;
 
+	public CharactersConnection connectionAsset;
+
 	[HideInInspector]
 	public List<Character> charactersToDelete;
 	void Start () {
 		Events.OnNewFile += OnNewFile;
 		Events.OnRemoveCharacters += OnRemoveCharacters;
+		Events.OnConnectCharacters += OnConnectCharacters;
 	}
 	void OnNewFile(WWW file)
 	{
@@ -64,7 +67,6 @@ public class CharactersManager : MonoBehaviour {
 	}
 	void OnAddCharacter(WWW file, int characterID, int style1, int style2, string imageName)
 	{
-		print ("characterID: " + characterID);
 		Character newCharacter = null;
 
 		switch (characterID) {
@@ -109,5 +111,24 @@ public class CharactersManager : MonoBehaviour {
 		} else {
 			Debug.Log ("No existe el character");
 		}
+	}
+	float lastTimeConnected;
+	void OnConnectCharacters(Vector3 pos, Character ch1, Character ch2)
+	{
+		if (Time.time - 0.5f < lastTimeConnected)
+			return;
+
+		if (ch1.states.state == StatesManager.states.CONNECT || ch2.states.state == StatesManager.states.CONNECT)
+			return;
+
+		lastTimeConnected = Time.time;
+
+		CharactersConnection charactersConnection = Instantiate (connectionAsset);
+		charactersConnection.transform.localPosition = pos;
+
+		charactersConnection.Init (ch1, ch2);
+
+		ch1.states.ChangeState (StatesManager.states.CONNECT);
+		ch2.states.ChangeState (StatesManager.states.CONNECT);
 	}
 }
