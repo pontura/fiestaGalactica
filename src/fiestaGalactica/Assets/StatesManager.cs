@@ -24,7 +24,6 @@ public class StatesManager : MonoBehaviour {
 		if (this.state == _state)
 			return;
 		
-
 		switch (state) {
 
 		case states.FLY:

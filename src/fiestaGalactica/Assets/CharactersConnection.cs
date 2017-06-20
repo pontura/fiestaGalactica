@@ -37,9 +37,7 @@ public class CharactersConnection : MonoBehaviour {
 		pos1.y = 0; pos2.y = 0;
 		pos1.z = 0; pos2.z = 0;
 
-
-
-		Invoke ("Reset", 2);
+		Invoke ("Reset", 5.3f);
 	}
 	void Reset()
 	{

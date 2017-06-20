@@ -9,9 +9,12 @@ public class State : MonoBehaviour {
 
 	[HideInInspector]
 	public Animator anim;
+	[HideInInspector]
+	public Character character;
 
 	void Awake()
 	{
+		character = GetComponent<Character> ();
 		anim = GetComponent<Animator> ();
 		limits = new Vector2 (8, 30);
 	}

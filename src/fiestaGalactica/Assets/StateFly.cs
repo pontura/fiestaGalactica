@@ -9,6 +9,8 @@ public class StateFly : State {
 
 	public override void OnInit()
 	{
+		if (character.states.state != StatesManager.states.FLY)
+			return;
 		rotate = (float)( Random.Range (0, 400) - 200 ) / 10;
 		anim.Play ("FlightStart");
 		CancelInvoke ();
@@ -16,6 +18,8 @@ public class StateFly : State {
 	}
 	void Loop()
 	{
+		if (character.states.state != StatesManager.states.FLY)
+			return;
 		anim.Play ("Flight");
 		Invoke ("OnInit", 2);
 	}
