@@ -23,6 +23,13 @@ public class CharactersManager : MonoBehaviour {
 		Events.OnRemoveCharacters += OnRemoveCharacters;
 		Events.OnConnectCharacters += OnConnectCharacters;
 	}
+	void Update()
+	{
+		if(Input.GetKeyDown(KeyCode.Q))
+			OnAddCharacter (null, 0, Random.Range(1,4), Random.Range(1,4), "20170621013837");
+		if(Input.GetKeyDown(KeyCode.A))
+			OnAddCharacter (null, Random.Range(1,4), 1, 1, "20170621013837");
+	}
 	void OnNewFile(WWW file)
 	{
 		string[] sinBarras = file.url.Split ("/" [0]);
@@ -104,7 +111,10 @@ public class CharactersManager : MonoBehaviour {
 		pos.z = -5;
 		newCharacter.transform.position = pos;
 
-		Texture2D texture = file.texture;
+		Texture2D texture = null;
+		if (file != null) {
+			texture = file.texture;
+		}
 		//Sprite sprite = Sprite.Create(texture as Texture2D, new Rect(0, 0, texture.width, texture.height), Vector2.zero);
 
 		if (newCharacter != null) {
