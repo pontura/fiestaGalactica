@@ -220,6 +220,8 @@ GameObject:
   - component: {fileID: 114931687589598826}
   - component: {fileID: 114539351933580396}
   - component: {fileID: 114110626105316664}
+  - component: {fileID: 114368273772743552}
+  - component: {fileID: 114729101710430884}
   m_Layer: 0
   m_Name: Cosmonauta
   m_TagString: Untagged
@@ -680,6 +682,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
+  character: {fileID: 0}
   handConnection: {fileID: 114235163920376310}
 --- !u!114 &114235163920376310
 MonoBehaviour:
@@ -693,6 +696,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character: {fileID: 114777118593359404}
+--- !u!114 &114368273772743552
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1621648837918100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44602be36c1612f4499a4435144075ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 0}
+  character: {fileID: 0}
 --- !u!114 &114405193832854770
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -720,8 +736,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
+  character: {fileID: 0}
   speed: 2
   rotate: 0
+--- !u!114 &114729101710430884
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1621648837918100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63d624e3c69ef944ab1c35e8eae17949, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 0}
+  character: {fileID: 0}
 --- !u!114 &114777118593359404
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -773,6 +803,9 @@ MonoBehaviour:
   state: 0
   fly: {fileID: 114539351933580396}
   connect: {fileID: 114110626105316664}
+  photo: {fileID: 114368273772743552}
+  launch: {fileID: 114729101710430884}
+  activeState: {fileID: 0}
 --- !u!135 &135201543300001888
 SphereCollider:
   m_ObjectHideFlags: 1

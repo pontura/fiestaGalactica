@@ -35,25 +35,37 @@ public class State : MonoBehaviour {
 
 	public void Positionate(Vector3 pos)
 	{
-		bool repositionated = false;
 		if (pos.y > limits.x) {
-			repositionated = true;
 			pos.y = -limits.x;
+			pos = Repositionate(pos);
 		} else if (pos.y < -limits.x) {
-			repositionated = true;
 			pos.y = limits.x;
+			pos = Repositionate(pos);
 		}
-		
 		if (pos.x > limits.y) {
-			repositionated = true;
 			pos.x = -limits.y;
+			pos = Repositionate(pos);
 		} else if (pos.x < -limits.y) {
-			repositionated = true;
 			pos.x = limits.y;
+			pos = Repositionate(pos);
 		}
-		if (repositionated)
-			pos.z = Random.Range (0, 3) * 20 * -1;
 		transform.localPosition = pos;
+	}
+	Vector3 Repositionate(Vector3 pos)
+	{
+		int rand = Random.Range (0, 3);
+		if (rand == 1) {
+			pos.x /= 1.5f;
+			pos.y /= 1.5f;
+		} else if (rand == 2) {
+			pos.x /= 1.6f;
+			pos.y /= 1.6f;
+		}else if (rand == 3) {
+			pos.x /= 1.9f;
+			pos.y /= 1.9f;
+		}
+		pos.z = rand * 20 * -1;
+		return pos;
 	}
 	public void Rotate(Vector3 rot)
 	{

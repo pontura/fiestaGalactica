@@ -7,27 +7,45 @@ public class Creator : MonoBehaviour {
 
 	public GameObject startingUI;
 	public GameObject styles;
+	public GameObject stylesAliens;
 	public GameObject done;
+	public GameObject initPanel;
 
-	public int characterID;
 	public int id;
 	public int id2;
 	public int totalStyles;
 	public WebcamPhoto webcamPhoto;
 	int screen_Shot_Count = 0;
+	public CharacterCreator characterCreator;
+	public int characterSelectedID;
 
 	void Start()
 	{
-		startingUI.SetActive (true);
+		initPanel.SetActive (true);
+
+		startingUI.SetActive (false);
 		styles.SetActive (false);
+		stylesAliens.SetActive (false);
 		done.SetActive (false);
+
 		Events.OnPhotoTaken += OnPhotoTaken;
+	}
+	public void CharacterSelected(int id)
+	{
+		this.characterSelectedID = id;
+		initPanel.SetActive (false);
+		startingUI.SetActive (true);
+
+		characterCreator.SetCharacter (id);
 	}
 	public void OnPhotoTaken()
 	{
 		startingUI.SetActive (false);
-		styles.SetActive (true);
-		StartCoroutine (Test ());
+		if (characterSelectedID == 0)
+			styles.SetActive (true);
+		else
+			stylesAliens.SetActive (true);
+		//StartCoroutine (Test ());
 	}
 	public void Create()
 	{
@@ -35,13 +53,14 @@ public class Creator : MonoBehaviour {
 
 		startingUI.SetActive (false);
 		styles.SetActive (false);
+		stylesAliens.SetActive (false);
 		done.SetActive (false);
 
 	}
 
 	IEnumerator Test()
 	{
-		Debug.Log ("AA");
+		Debug.Log ("____ Test: http://127.0.0.1/runner/index.php");
 		WWWForm form = new WWWForm();
 		WWW w = new WWW("http://127.0.0.1/runner/index.php", new byte[]{0});
 		yield return w;
@@ -55,7 +74,20 @@ public class Creator : MonoBehaviour {
 			Done ();
 		}
 	}
-
+	public void NextAlien()
+	{
+		characterSelectedID++;
+		if (characterSelectedID > 4)
+			characterSelectedID = 1;
+		Events.ChangeAlien (characterSelectedID);
+	}
+	public void PrevAlien()
+	{
+		characterSelectedID--;
+		if (characterSelectedID < 1)
+			characterSelectedID= 4;
+		Events.ChangeAlien (characterSelectedID);
+	}
 	public void Next()
 	{
 		id++;
@@ -96,7 +128,7 @@ public class Creator : MonoBehaviour {
 		Object.Destroy(tex);
 		screen_Shot_Count++;
 
-		string file_Name = System.DateTime.Now.ToString("yyyyMMddhhmmss") + "_" + characterID + "_" + id + "_" + id2 + ".png";
+		string file_Name = System.DateTime.Now.ToString("yyyyMMddhhmmss") + "_" + characterSelectedID + "_" + id + "_" + id2 + ".png";
 		var fileName = Application.dataPath + "/" + file_Name;
 
 		//File.WriteAllBytes(fileName, bytes);

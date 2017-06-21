@@ -12,6 +12,7 @@ public class CharactersManager : MonoBehaviour {
 	public Character alien1;
 	public Character alien2;
 	public Character alien3;
+	public Character alien4;
 
 	public CharactersConnection connectionAsset;
 
@@ -70,21 +71,25 @@ public class CharactersManager : MonoBehaviour {
 		Character newCharacter = null;
 
 		switch (characterID) {
-		case 1:
+		case 0:
 			newCharacter = Instantiate (astronauta);
 			newCharacter.info.type = CharacterInfo.types.ASTRONAUTA;
 			break;
-		case 2:
-			newCharacter = Instantiate (astronauta);
+		case 1:
+			newCharacter = Instantiate (alien1);
 			newCharacter.info.type = CharacterInfo.types.ALIEN1;
 			break;
-		case 3:
-			newCharacter = Instantiate (astronauta);
+		case 2:
+			newCharacter = Instantiate (alien2);
 			newCharacter.info.type = CharacterInfo.types.ALIEN2;
 			break;
-		case 4:
-			newCharacter = Instantiate (astronauta);
+		case 3:
+			newCharacter = Instantiate (alien3);
 			newCharacter.info.type = CharacterInfo.types.ALIEN3;
+			break;
+		case 4:
+			newCharacter = Instantiate (alien4);
+			newCharacter.info.type = CharacterInfo.types.ALIEN4;
 			break;
 		}
 		newCharacter.url = imageName;
@@ -108,6 +113,7 @@ public class CharactersManager : MonoBehaviour {
 			newCharacter.info.texture2d = texture;
 
 			newCharacter.Init ();
+			newCharacter.states.ChangeState (StatesManager.states.LAUNCH);
 		} else {
 			Debug.Log ("No existe el character");
 		}

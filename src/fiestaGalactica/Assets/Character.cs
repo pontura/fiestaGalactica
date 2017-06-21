@@ -12,18 +12,18 @@ public class Character : MonoBehaviour {
 	public CharacterStyles styles;
 	public StatesManager states;
 	public string url;
-	private Animator anim;
 
-	void Start()
+	void Awake()
 	{
 		states = GetComponent<StatesManager> ();
-		anim = GetComponent<Animator> ();
 		c = FindObjectOfType<Camera> ();
-		anim.Play ("Launch");
 	}
 	public void Init()
 	{
-		styles.Change (info.styleHead, info.styleBody);
+		
+		if(info.type == CharacterInfo.types.ASTRONAUTA)
+			styles.Change (info.styleHead, info.styleBody);
+		
 		head.material.mainTexture = info.texture2d;
 	}
 	void Updatess()

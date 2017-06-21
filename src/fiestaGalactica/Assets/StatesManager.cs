@@ -7,24 +7,43 @@ public class StatesManager : MonoBehaviour {
 	public states state;
 	public enum states
 	{
-		IDLE,
+		LAUNCH,
 		FLY,
 		CONNECT
 	}
 	public StateFly fly;
 	public StateConnected connect;
+	public StatePhoto photo;
+	public StateLaunch launch;
+
+	public State activeState;
 	Character character;
 
-	void Start () {
+	void Awake () {
 		character = GetComponent<Character> ();
-		fly.Init ();
+
+		if (activeState != null) {
+			activeState.enabled = true;
+			activeState.Init ();
+		}
+	}
+	void Reset()
+	{
+		connect.enabled = false;
+		fly.enabled = false;
+		photo.enabled = false;
+		launch.enabled = false;
 	}
 	public void ChangeState(states _state)
 	{
-		if (this.state == _state)
-			return;
+		//if (this.state == _state)
+			//return;
 		
 		switch (state) {
+
+		case states.LAUNCH:
+			launch.Finish ();
+			break;
 
 		case states.FLY:
 			fly.Finish ();
@@ -34,13 +53,15 @@ public class StatesManager : MonoBehaviour {
 			connect.Finish ();
 			break;
 		}
-
+		Reset ();
 		this.state = _state;
-		connect.enabled = false;
-		fly.enabled = false;
+
 
 		switch (state) {
-
+		case states.LAUNCH:
+			launch.enabled = true;
+			launch.Init ();
+			break;
 		case states.FLY:
 			fly.enabled = true;
 			fly.Init ();

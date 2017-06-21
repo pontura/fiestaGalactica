@@ -12,9 +12,14 @@ public class StateFly : State {
 		if (character.states.state != StatesManager.states.FLY)
 			return;
 		rotate = (float)( Random.Range (0, 400) - 200 ) / 10;
-		anim.Play ("FlightStart");
-		CancelInvoke ();
-		Invoke ("Loop", 1.5f);
+		if (character.info.type == CharacterInfo.types.ASTRONAUTA) {
+			anim.Play ("FlightStart");
+			CancelInvoke ();
+			Invoke ("Loop", 1.5f);
+		}
+		else
+			anim.Play ("Float");
+		
 	}
 	void Loop()
 	{
