@@ -13,7 +13,8 @@ public class CharacterInfo : MonoBehaviour {
 		ASTRONAUTA,
 		ALIEN1,
 		ALIEN2,
-		ALIEN3
+		ALIEN3,
+		ALIEN4
 	}
 	public int styleHead;
 	public int styleBody;

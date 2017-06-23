@@ -17,7 +17,6 @@ public class CharacterStyles : MonoBehaviour {
 	public void Change(int id, int id2) {
 		
 		string fileField = "Cosmonauta/ropa_";
-		print (fileField + id + "_CASCO1");
 
 		casco.sprite = Resources.Load<Sprite> (fileField + id + "_CASCO1");
 		body.sprite = Resources.Load<Sprite> (fileField + id2 + "_BODY");

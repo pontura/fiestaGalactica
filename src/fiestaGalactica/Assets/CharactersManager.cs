@@ -12,12 +12,23 @@ public class CharactersManager : MonoBehaviour {
 	public Character alien1;
 	public Character alien2;
 	public Character alien3;
+	public Character alien4;
+
+	public CharactersConnection connectionAsset;
 
 	[HideInInspector]
 	public List<Character> charactersToDelete;
 	void Start () {
 		Events.OnNewFile += OnNewFile;
 		Events.OnRemoveCharacters += OnRemoveCharacters;
+		Events.OnConnectCharacters += OnConnectCharacters;
+	}
+	void Update()
+	{
+		if(Input.GetKeyDown(KeyCode.Q))
+			OnAddCharacter (null, 0, Random.Range(1,4), Random.Range(1,4), "20170621013837");
+		if(Input.GetKeyDown(KeyCode.A))
+			OnAddCharacter (null, Random.Range(1,4), 1, 1, "20170621013837");
 	}
 	void OnNewFile(WWW file)
 	{
@@ -64,25 +75,28 @@ public class CharactersManager : MonoBehaviour {
 	}
 	void OnAddCharacter(WWW file, int characterID, int style1, int style2, string imageName)
 	{
-		print ("characterID: " + characterID);
 		Character newCharacter = null;
 
 		switch (characterID) {
-		case 1:
+		case 0:
 			newCharacter = Instantiate (astronauta);
 			newCharacter.info.type = CharacterInfo.types.ASTRONAUTA;
 			break;
-		case 2:
-			newCharacter = Instantiate (astronauta);
+		case 1:
+			newCharacter = Instantiate (alien1);
 			newCharacter.info.type = CharacterInfo.types.ALIEN1;
 			break;
-		case 3:
-			newCharacter = Instantiate (astronauta);
+		case 2:
+			newCharacter = Instantiate (alien2);
 			newCharacter.info.type = CharacterInfo.types.ALIEN2;
 			break;
-		case 4:
-			newCharacter = Instantiate (astronauta);
+		case 3:
+			newCharacter = Instantiate (alien3);
 			newCharacter.info.type = CharacterInfo.types.ALIEN3;
+			break;
+		case 4:
+			newCharacter = Instantiate (alien4);
+			newCharacter.info.type = CharacterInfo.types.ALIEN4;
 			break;
 		}
 		newCharacter.url = imageName;
@@ -97,7 +111,10 @@ public class CharactersManager : MonoBehaviour {
 		pos.z = -5;
 		newCharacter.transform.position = pos;
 
-		Texture2D texture = file.texture;
+		Texture2D texture = null;
+		if (file != null) {
+			texture = file.texture;
+		}
 		//Sprite sprite = Sprite.Create(texture as Texture2D, new Rect(0, 0, texture.width, texture.height), Vector2.zero);
 
 		if (newCharacter != null) {
@@ -106,8 +123,28 @@ public class CharactersManager : MonoBehaviour {
 			newCharacter.info.texture2d = texture;
 
 			newCharacter.Init ();
+			newCharacter.states.ChangeState (StatesManager.states.LAUNCH);
 		} else {
 			Debug.Log ("No existe el character");
 		}
+	}
+	float lastTimeConnected;
+	void OnConnectCharacters(Vector3 pos, Character ch1, Character ch2)
+	{
+		if (Time.time - 0.5f < lastTimeConnected)
+			return;
+
+		if (ch1.states.state == StatesManager.states.CONNECT || ch2.states.state == StatesManager.states.CONNECT)
+			return;
+
+		lastTimeConnected = Time.time;
+
+		CharactersConnection charactersConnection = Instantiate (connectionAsset);
+		charactersConnection.transform.localPosition = pos;
+
+		charactersConnection.Init (ch1, ch2);
+
+		ch1.states.ChangeState (StatesManager.states.CONNECT);
+		ch2.states.ChangeState (StatesManager.states.CONNECT);
 	}
 }

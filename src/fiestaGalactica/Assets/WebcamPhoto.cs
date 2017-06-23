@@ -9,7 +9,7 @@ public class WebcamPhoto : MonoBehaviour
 	WebCamTexture webCamTexture;
 	private Animation anim;
 
-	public MeshRenderer rawImage;
+	MeshRenderer rawImage;
 
 	private bool photoTaken;
 	private bool ready;
@@ -18,13 +18,23 @@ public class WebcamPhoto : MonoBehaviour
 	{
 		Events.CreatorReset += CreatorReset;
 		anim = GetComponent<Animation> ();
-		webCamTexture = new WebCamTexture(WebCamTexture.devices[WebCamTexture.devices.Length-1].name, 800, 600, 12);
-		CreatorReset ();
+		webCamTexture = new WebCamTexture(WebCamTexture.devices[WebCamTexture.devices.Length-1].name, 400, 300, 12);
+		anim.Play ("Idle");
+		webCamTexture.Play();
+	}
+	public void SetRawImage(MeshRenderer _rawImage)
+	{
+		this.rawImage = _rawImage;
+		Vector3 scale = rawImage.transform.localScale;
+
+		rawImage.transform.localScale = scale;
+		rawImage.material.mainTexture = webCamTexture;
+	
 	}
 	void CreatorReset()
 	{
 		photoTexture = null;
-		anim.Play ("Idle");
+
 		if (webCamTexture.isPlaying)
 			webCamTexture.Stop();
 		else
