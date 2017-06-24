@@ -397,7 +397,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0.019607844}
+  m_BackGroundColor: {r: 0, g: 0.003921569, b: 0.121568635, a: 0.019607844}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -406,7 +406,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 9
+  field of view: 8.9
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -488,6 +488,7 @@ GameObject:
   - component: {fileID: 669531316}
   - component: {fileID: 669531315}
   - component: {fileID: 669531317}
+  - component: {fileID: 669531318}
   m_Layer: 0
   m_Name: Data
   m_TagString: Untagged
@@ -506,8 +507,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1aecb12119117a04293dcf4769ea6b0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  build: 1
+  build: 0
   photosManager: {fileID: 0}
+  config: {fileID: 0}
   currentLevel: 
 --- !u!4 &669531316
 Transform:
@@ -537,6 +539,18 @@ MonoBehaviour:
   PHOTOS_URL: 
   files: []
   imagesLoaded: []
+--- !u!114 &669531318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 669531314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bf8b0de436785e4cb745b791d434a12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  url: 
 --- !u!1 &717248205
 GameObject:
   m_ObjectHideFlags: 0
@@ -559,7 +573,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 717248205}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 24, y: 0, z: 0}
+  m_LocalPosition: {x: 24, y: 1.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 83895642}
@@ -1161,7 +1175,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1418031143}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -28.24, y: 0, z: 0}
+  m_LocalPosition: {x: -28.24, y: 1.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1065303653}

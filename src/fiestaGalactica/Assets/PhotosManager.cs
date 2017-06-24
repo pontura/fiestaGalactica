@@ -10,13 +10,13 @@ public class PhotosManager : MonoBehaviour {
 	public List<string> files;
 	public List<string> imagesLoaded;
 
-	void Start()
+	void Awake()
 	{
-		if(Data.Instance.build == Data.builds.DEBUG)
-			PHOTOS_URL = "http://pontura.com/fiesta/";
-		else
-			PHOTOS_URL = "http://pontura.com/fiesta/";
-		
+		Events.OnSettingsLoaded += OnSettingsLoaded;
+	}
+	void OnSettingsLoaded()
+	{
+		PHOTOS_URL = Data.Instance.config.url;		
 		Invoke ("Loop", 0.1f);
 	}
 	void Loop()
@@ -26,7 +26,7 @@ public class PhotosManager : MonoBehaviour {
 	}
 	void GetAllFiles()
 	{
-		Events.Log("Getting files");
+		//Events.Log("Getting files");
 		var url = PHOTOS_URL + "load.php";
 		WWW www = new WWW(url);
 		StartCoroutine(WaitForRequest(www));
@@ -44,7 +44,7 @@ public class PhotosManager : MonoBehaviour {
 	}
 	void ParseData(string data)
 	{
-		Events.Log("Data Server Received");
+		//Events.Log("Data Server Received");
 		string[] imageData = data.Split ("-"[0]);
 		foreach (string imageName in imageData) {
 			if (imageName.Length > 1) {
@@ -55,7 +55,7 @@ public class PhotosManager : MonoBehaviour {
 	}
 	public IEnumerator LoadSprite(string absoluteImagePath, string imageName)
 	{
-		Events.Log("LoadSprite " + absoluteImagePath);
+	//	Events.Log("LoadSprite " + absoluteImagePath);
 
 		if (!fileWasLoaded (imageName)) {
 		
@@ -75,7 +75,7 @@ public class PhotosManager : MonoBehaviour {
 
 			yield return localFile;
 
-			print (imageName + " ___  " + localFile.url);
+			//print (imageName + " ___  " + localFile.url);
 
 			Events.OnNewFile (localFile);
 

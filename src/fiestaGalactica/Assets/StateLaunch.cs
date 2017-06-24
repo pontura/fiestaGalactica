@@ -20,7 +20,7 @@ public class StateLaunch : State {
 			timeToLaunch = (float)Random.Range (2, 20) / 300;
 		} else {
 			timeToFly = 2f;
-			rotate = (float)( Random.Range (0, 300) -150 );
+			rotate = (float)( Random.Range (1, 70) );
 		}
 		transform.localEulerAngles = new Vector3(0,0,rotate);
 		anim.Play ("Launch");

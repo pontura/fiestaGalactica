@@ -20,7 +20,6 @@ public class WebcamPhoto : MonoBehaviour
 		anim = GetComponent<Animation> ();
 		webCamTexture = new WebCamTexture(WebCamTexture.devices[WebCamTexture.devices.Length-1].name, 400, 300, 12);
 		anim.Play ("Idle");
-		webCamTexture.Play();
 	}
 	public void SetRawImage(MeshRenderer _rawImage)
 	{
@@ -33,6 +32,7 @@ public class WebcamPhoto : MonoBehaviour
 	}
 	void CreatorReset()
 	{
+		anim.Play ("Idle");
 		photoTexture = null;
 
 		if (webCamTexture.isPlaying)

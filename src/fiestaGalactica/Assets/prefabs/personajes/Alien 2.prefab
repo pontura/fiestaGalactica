@@ -745,7 +745,9 @@ MonoBehaviour:
   anim: {fileID: 0}
   character: {fileID: 0}
   speed: 2
+  floatSpeed: 0.2
   rotate: 0
+  flyType: 0
 --- !u!114 &114112222981147360
 MonoBehaviour:
   m_ObjectHideFlags: 1

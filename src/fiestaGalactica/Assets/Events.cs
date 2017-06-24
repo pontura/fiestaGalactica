@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public static class Events {
 
 	public static System.Action<Vector3, Character, Character> OnConnectCharacters = delegate { };
+	public static System.Action OnSettingsLoaded = delegate { };
 	public static System.Action<string> Log = delegate { };
 	public static System.Action OnGameOver = delegate { };
 	public static System.Action<WWW> OnNewFile = delegate { };

@@ -20,7 +20,7 @@ public class UI : MonoBehaviour {
 	void CheckPhotos()
 	{
 		int totalPhotos = Data.Instance.photosManager.files.Count;
-		Events.Log ("Total " + totalPhotos);
+		//Events.Log ("Total " + totalPhotos);
 	}
 	void Log(string text)
 	{

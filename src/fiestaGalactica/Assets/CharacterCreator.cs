@@ -9,7 +9,6 @@ public class CharacterCreator : MonoBehaviour {
 	public Character alien1;
 	public Character alien2;
 	public Character alien3;
-	public Character alien4;
 	public Character selectedCharacter;
 
 	void Start () {
@@ -23,7 +22,6 @@ public class CharacterCreator : MonoBehaviour {
 		alien1.gameObject.SetActive (false);
 		alien2.gameObject.SetActive (false);
 		alien3.gameObject.SetActive (false);
-		alien4.gameObject.SetActive (false);
 	}
 	public void SetCharacter(int id)
 	{
@@ -41,12 +39,11 @@ public class CharacterCreator : MonoBehaviour {
 		case 3: 
 			selectedCharacter = alien3;
 			break;
-		case 4: 
-			selectedCharacter = alien4;
-			break;
 		}
 		GetComponent<WebcamPhoto> ().SetRawImage (selectedCharacter.head);
 		selectedCharacter.gameObject.SetActive (true);
+		selectedCharacter.states.ChangeState (StatesManager.states.PHOTO);
+
 	}
 	void ChangeStyle (int id, int id2) {
 		styles.Change (id, id2);

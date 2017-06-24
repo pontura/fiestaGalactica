@@ -18,6 +18,8 @@ public class Data : MonoBehaviour
 
 	[HideInInspector]
 	public PhotosManager photosManager;
+	[HideInInspector]
+	public Config config;
 
     public static Data Instance
     {
@@ -56,6 +58,7 @@ public class Data : MonoBehaviour
        
         DontDestroyOnLoad(this.gameObject);
 
+		config = GetComponent<Config> ();
 		photosManager = GetComponent<PhotosManager> ();
     }
 

@@ -5,11 +5,17 @@ using System.IO;
 
 public class Creator : MonoBehaviour {
 
+	public string URL = "http://192.168.0.6/fiesta/";
+	public GameObject initPanel;
+
+	public Door doorCosmonauta;
+	public Door doorAliens;
+
 	public GameObject startingUI;
 	public GameObject styles;
 	public GameObject stylesAliens;
 	public GameObject done;
-	public GameObject initPanel;
+
 
 	public int id;
 	public int id2;
@@ -21,23 +27,59 @@ public class Creator : MonoBehaviour {
 
 	void Start()
 	{
-		initPanel.SetActive (true);
-
+		initPanel.SetActive (false);
+		doorAliens.gameObject.SetActive (false);
+		doorCosmonauta.gameObject.SetActive (false);
 		startingUI.SetActive (false);
 		styles.SetActive (false);
 		stylesAliens.SetActive (false);
 		done.SetActive (false);
-
+		OnSettingsLoaded ();
 		Events.OnPhotoTaken += OnPhotoTaken;
 	}
+	void OnSettingsLoaded()
+	{
+		initPanel.SetActive (true);
+	}
+
 	public void CharacterSelected(int id)
 	{
 		this.characterSelectedID = id;
-		initPanel.SetActive (false);
-		startingUI.SetActive (true);
-
-		characterCreator.SetCharacter (id);
+		Restart ();
 	}
+	void Restart()
+	{
+		
+		initPanel.SetActive (false);
+
+		if (characterSelectedID == 0)
+			doorCosmonauta.gameObject.SetActive (true);
+		else
+			doorAliens.gameObject.SetActive (true);
+
+		ResetDoors ();
+
+		characterCreator.SetCharacter (characterSelectedID);
+	}
+	public void IntroDone()
+	{
+		Events.CreatorReset ();
+
+		if (characterSelectedID == 0)
+			doorCosmonauta.OpenCosmonauta ();
+		else
+			doorAliens.OpenAlien ();
+		
+		startingUI.SetActive (true);
+	}
+	void CloseDoors()
+	{
+		if (characterSelectedID == 0)
+			doorCosmonauta.CloseCosmonauta ();
+		else
+			doorAliens.CloseAlien ();
+	}
+
 	public void OnPhotoTaken()
 	{
 		startingUI.SetActive (false);
@@ -45,11 +87,13 @@ public class Creator : MonoBehaviour {
 			styles.SetActive (true);
 		else
 			stylesAliens.SetActive (true);
-		//StartCoroutine (Test ());
+		StartCoroutine (Test ());
 	}
 	public void Create()
 	{
 		StartCoroutine (UploadPNG ());
+
+		CloseDoors ();
 
 		startingUI.SetActive (false);
 		styles.SetActive (false);
@@ -60,9 +104,9 @@ public class Creator : MonoBehaviour {
 
 	IEnumerator Test()
 	{
-		Debug.Log ("____ Test: http://127.0.0.1/runner/index.php");
+		Debug.Log (URL + "index.php");
 		WWWForm form = new WWWForm();
-		WWW w = new WWW("http://127.0.0.1/runner/index.php", new byte[]{0});
+		WWW w = new WWW(URL + "index.php", new byte[]{0});
 		yield return w;
 		if (w.error != null)
 		{
@@ -77,7 +121,7 @@ public class Creator : MonoBehaviour {
 	public void NextAlien()
 	{
 		characterSelectedID++;
-		if (characterSelectedID > 4)
+		if (characterSelectedID > 3)
 			characterSelectedID = 1;
 		Events.ChangeAlien (characterSelectedID);
 	}
@@ -85,7 +129,7 @@ public class Creator : MonoBehaviour {
 	{
 		characterSelectedID--;
 		if (characterSelectedID < 1)
-			characterSelectedID= 4;
+			characterSelectedID= 3;
 		Events.ChangeAlien (characterSelectedID);
 	}
 	public void Next()
@@ -138,7 +182,7 @@ public class Creator : MonoBehaviour {
 		form.AddField("imageName", file_Name);
 		form.AddBinaryData("fileToUpload", bytes);
 
-		WWW w = new WWW("http://www.pontura.com/fiesta/upload.php", form);
+		WWW w = new WWW(URL + "upload.php", form);
 		yield return w;
 
 		if (w.error != null)
@@ -147,21 +191,29 @@ public class Creator : MonoBehaviour {
 		}
 		else
 		{
-			Debug.Log("Finished Uploading Screenshot");
+			Debug.Log("Finished Uploading Screenshot to " + URL);
 			Done ();
 		}
 	}
 	void Done()
 	{		
-		done.SetActive (true);
+		//done.SetActive (true);
 		startingUI.SetActive (false);
 		styles.SetActive (false);
 		Invoke ("DoneReady", 2);
 	}
+
 	void DoneReady()
-	{
-		startingUI.SetActive (true);
+	{		
 		done.SetActive (false);
-		Events.CreatorReset ();
+		Restart ();
+	}
+	void ResetDoors()
+	{
+
+		if (characterSelectedID == 0)
+			doorCosmonauta.ResetCosmonauta ();
+		else
+			doorAliens.ResetAliens ();
 	}
 }
