@@ -508,36 +508,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 198441931297221320, guid: 89325f220416d984fb085bbc4e847af1,
-        type: 2}
-      propertyPath: randomSeed
-      value: -626277663
-      objectReference: {fileID: 0}
-    - target: {fileID: 198848195842192760, guid: 89325f220416d984fb085bbc4e847af1,
-        type: 2}
-      propertyPath: randomSeed
-      value: 1345796477
-      objectReference: {fileID: 0}
-    - target: {fileID: 198964966900738102, guid: 89325f220416d984fb085bbc4e847af1,
-        type: 2}
-      propertyPath: randomSeed
-      value: 1482878217
-      objectReference: {fileID: 0}
-    - target: {fileID: 198034553100391692, guid: 89325f220416d984fb085bbc4e847af1,
-        type: 2}
-      propertyPath: randomSeed
-      value: -1301868993
-      objectReference: {fileID: 0}
-    - target: {fileID: 198058844750662480, guid: 89325f220416d984fb085bbc4e847af1,
-        type: 2}
-      propertyPath: randomSeed
-      value: 1050673551
-      objectReference: {fileID: 0}
-    - target: {fileID: 198051651749051270, guid: 89325f220416d984fb085bbc4e847af1,
-        type: 2}
-      propertyPath: randomSeed
-      value: -1779531792
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 89325f220416d984fb085bbc4e847af1, type: 2}
   m_IsPrefabParent: 0
