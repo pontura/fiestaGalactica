@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CharactersManager : MonoBehaviour {
 
+	public List<Texture2D> all;
 	public Transform propulsorAliens;
 	public Transform propulsorCosmonautas;
 
@@ -114,6 +115,7 @@ public class CharactersManager : MonoBehaviour {
 		Texture2D texture = null;
 		if (file != null) {
 			texture = file.texture;
+			all.Add (texture);
 		}
 		//Sprite sprite = Sprite.Create(texture as Texture2D, new Rect(0, 0, texture.width, texture.height), Vector2.zero);
 

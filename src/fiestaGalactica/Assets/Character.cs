@@ -17,6 +17,15 @@ public class Character : MonoBehaviour {
 	{
 		states = GetComponent<StatesManager> ();
 		c = FindObjectOfType<Camera> ();
+		Events.OnSpecialEffect += OnSpecialEffect;
+	}
+	void OnDestroy()
+	{
+		Events.OnSpecialEffect -= OnSpecialEffect;
+	}
+	void OnSpecialEffect()
+	{
+		states.ChangeState (StatesManager.states.SPECIAL);
 	}
 	public void Init()
 	{

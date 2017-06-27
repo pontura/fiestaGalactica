@@ -16,4 +16,5 @@ public static class Events {
 	public static System.Action<int, int> ChangeStyle = delegate { };
 	public static System.Action<int> ChangeAlien = delegate { };
 	public static System.Action CreatorReset = delegate { };
+	public static System.Action OnSpecialEffect = delegate { };
 }

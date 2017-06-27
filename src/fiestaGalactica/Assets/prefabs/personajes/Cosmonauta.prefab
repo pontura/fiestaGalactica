@@ -222,6 +222,7 @@ GameObject:
   - component: {fileID: 114110626105316664}
   - component: {fileID: 114368273772743552}
   - component: {fileID: 114729101710430884}
+  - component: {fileID: 114230103446289998}
   m_Layer: 0
   m_Name: Cosmonauta
   m_TagString: Untagged
@@ -684,6 +685,19 @@ MonoBehaviour:
   anim: {fileID: 0}
   character: {fileID: 0}
   handConnection: {fileID: 114235163920376310}
+--- !u!114 &114230103446289998
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1621648837918100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2951e60893459c94bbf70ad4442cca62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 0}
+  character: {fileID: 0}
 --- !u!114 &114235163920376310
 MonoBehaviour:
   m_ObjectHideFlags: 1

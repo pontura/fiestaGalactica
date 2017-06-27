@@ -10,7 +10,8 @@ public class StatesManager : MonoBehaviour {
 		LAUNCH,
 		FLY,
 		CONNECT,
-		PHOTO
+		PHOTO,
+		SPECIAL
 	}
 	public StateFly fly;
 	public StateConnected connect;
@@ -75,6 +76,11 @@ public class StatesManager : MonoBehaviour {
 		case states.CONNECT:
 			connect.enabled = true;
 			connect.Init ();
+			break;
+
+		case states.SPECIAL:
+			photo.enabled = true;
+			photo.Init ();
 			break;
 		}
 
