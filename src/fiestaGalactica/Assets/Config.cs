@@ -9,6 +9,7 @@ using SimpleJSON;
 public class Config : MonoBehaviour
 {
 	public string url;
+	public Vector2 limits = new Vector2 (8, 30);
 
 	void Start()
 	{

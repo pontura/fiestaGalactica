@@ -16,6 +16,7 @@ public class StatesManager : MonoBehaviour {
 	public StateFly fly;
 	public StateConnected connect;
 	public StatePhoto photo;
+	public StateSpecial special;
 	public StateLaunch launch;
 
 	public State activeState;
@@ -35,6 +36,7 @@ public class StatesManager : MonoBehaviour {
 		fly.enabled = false;
 		photo.enabled = false;
 		launch.enabled = false;
+		special.enabled = false;
 	}
 	public void ChangeState(states _state)
 	{
@@ -53,6 +55,10 @@ public class StatesManager : MonoBehaviour {
 
 		case states.CONNECT:
 			connect.Finish ();
+			break;
+
+		case states.SPECIAL:
+			special.Finish ();
 			break;
 		}
 		Reset ();
@@ -79,8 +85,8 @@ public class StatesManager : MonoBehaviour {
 			break;
 
 		case states.SPECIAL:
-			photo.enabled = true;
-			photo.Init ();
+			special.enabled = true;
+			special.Init ();
 			break;
 		}
 

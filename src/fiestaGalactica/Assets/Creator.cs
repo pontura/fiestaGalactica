@@ -36,6 +36,7 @@ public class Creator : MonoBehaviour {
 		done.SetActive (false);
 		OnSettingsLoaded ();
 		Events.OnPhotoTaken += OnPhotoTaken;
+		ResetDoors ();
 	}
 	void OnSettingsLoaded()
 	{
@@ -56,8 +57,6 @@ public class Creator : MonoBehaviour {
 			doorCosmonauta.gameObject.SetActive (true);
 		else
 			doorAliens.gameObject.SetActive (true);
-
-		ResetDoors ();
 
 		characterCreator.SetCharacter (characterSelectedID);
 	}
@@ -92,13 +91,11 @@ public class Creator : MonoBehaviour {
 	public void Create()
 	{
 		StartCoroutine (UploadPNG ());
-
-		CloseDoors ();
-
 		startingUI.SetActive (false);
 		styles.SetActive (false);
 		stylesAliens.SetActive (false);
 		done.SetActive (false);
+		CloseDoors ();
 
 	}
 
@@ -194,12 +191,13 @@ public class Creator : MonoBehaviour {
 			Debug.Log("Finished Uploading Screenshot to " + URL);
 			Done ();
 		}
+		yield return new WaitForSeconds(3);
+		ResetDoors ();
 	}
 	void Done()
 	{		
 		//done.SetActive (true);
 		startingUI.SetActive (false);
-		styles.SetActive (false);
 		Invoke ("DoneReady", 2);
 	}
 
@@ -210,7 +208,7 @@ public class Creator : MonoBehaviour {
 	}
 	void ResetDoors()
 	{
-
+		print ("ResetDoors");
 		if (characterSelectedID == 0)
 			doorCosmonauta.ResetCosmonauta ();
 		else

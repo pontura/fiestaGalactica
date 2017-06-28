@@ -698,6 +698,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
   character: {fileID: 0}
+  speed: 5
+  floatSpeed: 5
+  rotate: 0
 --- !u!114 &114235163920376310
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -820,6 +823,7 @@ MonoBehaviour:
   fly: {fileID: 114539351933580396}
   connect: {fileID: 114110626105316664}
   photo: {fileID: 114368273772743552}
+  special: {fileID: 114230103446289998}
   launch: {fileID: 114729101710430884}
   activeState: {fileID: 0}
 --- !u!135 &135201543300001888

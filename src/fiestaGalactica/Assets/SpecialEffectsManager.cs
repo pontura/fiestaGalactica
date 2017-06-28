@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class SpecialEffectsManager : MonoBehaviour {
 
-	public int timeToHappen;
-
-	public Robot robot;
-
+	public int timeToHappen = 60;
+	public int MinCharacters = 10;
+	public Robots robots;
 	private int sec = 0;
 	private CharactersManager characterManager;
+	public Transform mainCamera;
 
 	void Start () {
 		sec = 0;
@@ -20,7 +20,7 @@ public class SpecialEffectsManager : MonoBehaviour {
 	{
 		sec++;
 		if (sec >= timeToHappen) {
-			if (characterManager.all.Count > 3) {
+			if (characterManager.all.Count > MinCharacters) {
 				Init ();
 			}
 		}
@@ -28,14 +28,14 @@ public class SpecialEffectsManager : MonoBehaviour {
 	}
 	void Init()
 	{
-		sec = -10;
+		sec = -1000;
 		Texture2D[] list = new Texture2D[4];
 
 		for(int a=0; a<characterManager.all.Count; a++ )
 			list [a] = characterManager.all[a];
 
 		Events.OnSpecialEffect ();
-		robot.Init (list);
+		robots.Init (list, mainCamera);
 		list = null;
 	}
 }

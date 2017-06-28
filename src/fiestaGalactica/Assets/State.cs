@@ -16,7 +16,7 @@ public class State : MonoBehaviour {
 	{
 		character = GetComponent<Character> ();
 		anim = GetComponent<Animator> ();
-		limits = new Vector2 (8, 30);
+		limits = Data.Instance.config.limits;
 	}
 	void Start()
 	{

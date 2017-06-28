@@ -33,7 +33,10 @@ public class StateLaunch : State {
 	}
 	void Done()
 	{
-		character.states.ChangeState (StatesManager.states.FLY);
+		if (character.states.state == StatesManager.states.SPECIAL)
+			character.states.ChangeState (StatesManager.states.SPECIAL);
+		else
+			character.states.ChangeState (StatesManager.states.FLY);
 	}
 
 }

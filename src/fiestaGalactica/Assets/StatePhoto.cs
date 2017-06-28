@@ -6,7 +6,6 @@ public class StatePhoto : State {
 
 	public override void OnInit()
 	{
-		print ("Photo");
 		anim.Play ("Photo");
 	}
 }
