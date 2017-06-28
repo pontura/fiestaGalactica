@@ -28,12 +28,6 @@ public class Data : MonoBehaviour
             if (mInstance == null)
             {
                 mInstance = FindObjectOfType<Data>();
-
-                if (mInstance == null)
-                {
-                    GameObject go = Instantiate(Resources.Load<GameObject>(PREFAB_PATH)) as GameObject;
-                    mInstance = go.GetComponent<Data>();
-                }
             }
             return mInstance;
         }

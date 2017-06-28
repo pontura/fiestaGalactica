@@ -11,6 +11,7 @@ public class StateSpecial : State {
 	public override void OnInit()
 	{
 		rotate = (float)( Random.Range (0, 600) - 300 ) / 10;
+	
 		if (character.info.type == CharacterInfo.types.ASTRONAUTA) {			
 			CancelInvoke ();
 			Loop ();

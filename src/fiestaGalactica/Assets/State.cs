@@ -12,18 +12,14 @@ public class State : MonoBehaviour {
 	[HideInInspector]
 	public Character character;
 
-	void Awake()
+	public void Init()
 	{
 		character = GetComponent<Character> ();
 		anim = GetComponent<Animator> ();
-		limits = Data.Instance.config.limits;
-	}
-	void Start()
-	{
 
-	}
-	public void Init()
-	{
+		if(Data.Instance != null)
+			limits = Data.Instance.config.limits;
+
 		OnInit ();
 	}
 	public void Finish()

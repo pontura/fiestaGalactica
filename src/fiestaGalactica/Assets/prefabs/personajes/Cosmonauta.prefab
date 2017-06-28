@@ -223,6 +223,7 @@ GameObject:
   - component: {fileID: 114368273772743552}
   - component: {fileID: 114729101710430884}
   - component: {fileID: 114230103446289998}
+  - component: {fileID: 114411297858434904}
   m_Layer: 0
   m_Name: Cosmonauta
   m_TagString: Untagged
@@ -382,8 +383,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1621648837918100}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -36}
+  m_LocalRotation: {x: -0.056172553, y: -0.0010971645, z: 0.0021096235, w: 0.9984183}
+  m_LocalPosition: {x: 0, y: 0, z: 13.73}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4723610532285368}
@@ -396,7 +397,7 @@ Transform:
   - {fileID: 4487312292837982}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -6.44, y: -0.14, z: 0.25}
 --- !u!4 &4199117175547886
 Transform:
   m_ObjectHideFlags: 1
@@ -444,13 +445,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1093244948673950}
-  m_LocalRotation: {x: 0.7071068, y: 0.7071068, z: 0, w: 0}
+  m_LocalRotation: {x: -0.7071068, y: 0.7071068, z: -0, w: 0}
   m_LocalPosition: {x: 0.001, y: 0.56, z: -0.2}
   m_LocalScale: {x: 1.2183529, y: 0.9137702, z: 0.0507647}
   m_Children: []
   m_Father: {fileID: 4723610532285368}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: -90}
 --- !u!4 &4443973498298336
 Transform:
   m_ObjectHideFlags: 1
@@ -741,6 +742,19 @@ MonoBehaviour:
   type: 0
   styleHead: 0
   styleBody: 0
+--- !u!114 &114411297858434904
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1621648837918100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44602be36c1612f4499a4435144075ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 0}
+  character: {fileID: 0}
 --- !u!114 &114539351933580396
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -783,7 +797,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   c: {fileID: 0}
-  lookAtCamera: 1
+  lookAtCamera: 0
   info: {fileID: 114405193832854770}
   head: {fileID: 23251720822016844}
   styles: {fileID: 114843373992197178}
@@ -822,7 +836,7 @@ MonoBehaviour:
   state: 0
   fly: {fileID: 114539351933580396}
   connect: {fileID: 114110626105316664}
-  photo: {fileID: 114368273772743552}
+  photo: {fileID: 114411297858434904}
   special: {fileID: 114230103446289998}
   launch: {fileID: 114729101710430884}
   activeState: {fileID: 0}

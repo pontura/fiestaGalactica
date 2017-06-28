@@ -10,32 +10,47 @@ public class SpecialEffectsManager : MonoBehaviour {
 	private int sec = 0;
 	private CharactersManager characterManager;
 	public Transform mainCamera;
+	bool isOn;
 
 	void Start () {
-		sec = 0;
+		robots.gameObject.SetActive (false);
 		characterManager = GetComponent<CharactersManager> ();
+		Restart ();
 		Loop ();
 	}
-	void Loop()
+	void Restart()
 	{
-		sec++;
-		if (sec >= timeToHappen) {
-			if (characterManager.all.Count > MinCharacters) {
-				Init ();
+		isOn = false;
+		sec = 0;
+	}
+	void Loop()
+	{		
+		if (!isOn) {
+			sec++;
+			if (sec >= timeToHappen) {
+				if (characterManager.all.Count > MinCharacters) {
+					Init ();
+				}
 			}
 		}
 		Invoke ("Loop", 1);
 	}
-	void Init()
+	void Init ()
 	{
-		sec = -1000;
+		isOn = true;
+		Events.OnSpecialEffect ();
+		StartCoroutine (InitRobot ());
+	}
+	IEnumerator InitRobot()
+	{	
+		robots.gameObject.SetActive (true);
 		Texture2D[] list = new Texture2D[4];
-
 		for(int a=0; a<characterManager.all.Count; a++ )
 			list [a] = characterManager.all[a];
-
-		Events.OnSpecialEffect ();
 		robots.Init (list, mainCamera);
 		list = null;
+		yield return new WaitForSeconds (40);
+		robots.gameObject.SetActive (false);
+		Restart ();
 	}
 }

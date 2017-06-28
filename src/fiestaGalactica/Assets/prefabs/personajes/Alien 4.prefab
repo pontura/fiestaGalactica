@@ -734,7 +734,7 @@ MonoBehaviour:
   fly: {fileID: 114254324054207978}
   connect: {fileID: 114192833768209402}
   photo: {fileID: 114252140726117872}
-  special: {fileID: 114607086139248308, guid: 5b6eda90f35cda345b9d475afd0cc3fc, type: 2}
+  special: {fileID: 114878635456916646}
   launch: {fileID: 114252825980640198}
   activeState: {fileID: 0}
 --- !u!135 &135405028059050402

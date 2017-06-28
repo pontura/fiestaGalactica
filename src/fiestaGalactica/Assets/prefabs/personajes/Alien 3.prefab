@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 114477910021788710}
   - component: {fileID: 114274011576035878}
   - component: {fileID: 114947017875884820}
-  - component: {fileID: 114957437921677672}
+  - component: {fileID: 114142378801825138}
   m_Layer: 0
   m_Name: Alien 3
   m_TagString: Untagged
@@ -443,13 +443,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1763844993725136}
-  m_LocalRotation: {x: 0.7071068, y: 0.7071068, z: -0, w: -0.000000013096722}
+  m_LocalRotation: {x: -0.7071068, y: 0.7071068, z: -0, w: 0}
   m_LocalPosition: {x: -0.001, y: 0.446, z: 0.073}
   m_LocalScale: {x: 1.2183521, y: 0.91377157, z: 0.05076015}
   m_Children: []
   m_Father: {fileID: 4909762130518208}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: -90}
 --- !u!4 &4533139573635490
 Transform:
   m_ObjectHideFlags: 1
@@ -731,6 +731,22 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114142378801825138
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1235121489029636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2951e60893459c94bbf70ad4442cca62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 0}
+  character: {fileID: 0}
+  speed: 5
+  floatSpeed: 5
+  rotate: 0
 --- !u!114 &114274011576035878
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -761,7 +777,7 @@ MonoBehaviour:
   fly: {fileID: 114797009107308010}
   connect: {fileID: 114514080088482198}
   photo: {fileID: 114680834113881592}
-  special: {fileID: 114607086139248308, guid: 5b6eda90f35cda345b9d475afd0cc3fc, type: 2}
+  special: {fileID: 114142378801825138}
   launch: {fileID: 114947017875884820}
   activeState: {fileID: 0}
 --- !u!114 &114477910021788710
@@ -805,7 +821,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   c: {fileID: 0}
-  lookAtCamera: 1
+  lookAtCamera: 0
   info: {fileID: 114477910021788710}
   head: {fileID: 23392310555207208}
   styles: {fileID: 114274011576035878}
@@ -835,7 +851,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b15fa237b3369a4dad3c6b90652553a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character: {fileID: 114629217408055668}
+  character: {fileID: 0}
 --- !u!114 &114797009107308010
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -866,22 +882,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
   character: {fileID: 0}
---- !u!114 &114957437921677672
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1235121489029636}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2951e60893459c94bbf70ad4442cca62, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  anim: {fileID: 0}
-  character: {fileID: 0}
-  speed: 5
-  floatSpeed: 5
-  rotate: 0
 --- !u!135 &135665678954586004
 SphereCollider:
   m_ObjectHideFlags: 1
