@@ -14,7 +14,7 @@ public class Robots : MonoBehaviour {
 			Robot newRobot = Instantiate (robot);
 			newRobot.transform.SetParent (container);
 			newRobot.transform.localPosition = Vector3.zero;
-			newRobot.Init (textures, camera);
+			newRobot.Init (textures, camera, a);
 		}
 	}
 	public void Reset()

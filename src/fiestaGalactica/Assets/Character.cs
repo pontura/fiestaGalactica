@@ -18,10 +18,27 @@ public class Character : MonoBehaviour {
 		states = GetComponent<StatesManager> ();
 		c = FindObjectOfType<Camera> ();
 		Events.OnSpecialEffect += OnSpecialEffect;
+		Events.OnLightTrip += OnLightTrip;
+	}
+	void Start()
+	{
+#if UNITY_IPHONE
+		head.transform.localEulerAngles = new Vector3(0,180,-90);
+		Vector3 scale = head.transform.localScale;
+		scale.y *= -1;
+		head.transform.localScale = scale;
+#endif
 	}
 	void OnDestroy()
 	{
 		Events.OnSpecialEffect -= OnSpecialEffect;
+	}
+	void OnLightTrip(bool isOn)
+	{
+		if(isOn)
+			states.ChangeState (StatesManager.states.LIGHTTRIP);
+		else
+			states.ChangeState (StatesManager.states.FLY);
 	}
 	void OnSpecialEffect()
 	{
@@ -34,6 +51,7 @@ public class Character : MonoBehaviour {
 			styles.Change (info.styleHead, info.styleBody);
 		
 		head.material.mainTexture = info.texture2d;
+
 	}
 	void Updatess()
 	{

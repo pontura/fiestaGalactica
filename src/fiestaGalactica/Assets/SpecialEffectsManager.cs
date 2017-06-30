@@ -11,6 +11,7 @@ public class SpecialEffectsManager : MonoBehaviour {
 	private CharactersManager characterManager;
 	public Transform mainCamera;
 	bool isOn;
+	public LightTrip lightTrip;
 
 	void Start () {
 		robots.gameObject.SetActive (false);
@@ -49,8 +50,11 @@ public class SpecialEffectsManager : MonoBehaviour {
 			list [a] = characterManager.all[a];
 		robots.Init (list, mainCamera);
 		list = null;
-		yield return new WaitForSeconds (40);
+		yield return new WaitForSeconds (25);
+		Events.OnLightTrip (true);
+		yield return new WaitForSeconds (1);
 		robots.gameObject.SetActive (false);
+		yield return new WaitForSeconds (60);
 		Restart ();
 	}
 }

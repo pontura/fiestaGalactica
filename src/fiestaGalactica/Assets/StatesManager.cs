@@ -11,7 +11,8 @@ public class StatesManager : MonoBehaviour {
 		FLY,
 		CONNECT,
 		PHOTO,
-		SPECIAL
+		SPECIAL,
+		LIGHTTRIP
 	}
 	public StateFly fly;
 	public StateConnected connect;
@@ -74,6 +75,7 @@ public class StatesManager : MonoBehaviour {
 			launch.enabled = true;
 			launch.Init ();
 			break;
+		case states.LIGHTTRIP:
 		case states.FLY:
 			fly.enabled = true;
 			fly.Init ();

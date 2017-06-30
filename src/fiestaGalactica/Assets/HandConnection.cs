@@ -10,9 +10,8 @@ public class HandConnection : MonoBehaviour {
 		
 	}
 	void OnTriggerEnter(Collider other)
-	{
-		
-		if (other.GetComponent<HandConnection> ()) {
+	{		
+		if (character != null && other.GetComponent<HandConnection> ()) {
 			if (character.states.state == StatesManager.states.SPECIAL || other.GetComponent<HandConnection> ().character.states.state == StatesManager.states.SPECIAL)
 				return;
 			other.GetComponent<HandConnection> ().enabled = false;

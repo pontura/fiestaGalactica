@@ -18,23 +18,30 @@ public class Robot : MonoBehaviour {
 		started = false;
 		photos = null;
 	}
-	public void Init(Texture2D[] textures, Transform camera)
+	int robotID;
+	public void Init(Texture2D[] textures, Transform camera, int robotID)
 	{	
-		
+		this.robotID = robotID;
 		target = camera;
 		int id = 0;
 		foreach (MeshRenderer mr in photos) {
 			mr.material.mainTexture = textures [id];
 			id++;
 		}
-		float rand = (float)Random.Range (0, 100) / 10;
-		Invoke("StartAnim", rand);	
+		//float rand = (float)Random.Range (0, 100) / 10;
+		Invoke("StartAnim", robotID*5);	
 	}
 	void StartAnim()
 	{
 		gameObject.SetActive (true);
 		started = true;
-		randomX = (float)(Random.Range (0, 100)-50)/100;
+		if (robotID == 1)
+			randomX = 0.3f;
+		else if (robotID == 2)
+			randomX = -0.3f;
+		else
+			randomX = 0;
+		//randomX = (float)(Random.Range (0, 100)-50)/100;
 	}
 	void Update()
 	{

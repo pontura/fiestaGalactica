@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using UnityEngine.UI;
 
 public class Creator : MonoBehaviour {
 
+	public InputField urlField;
 	public string URL = "http://192.168.0.6/fiesta/";
 	public GameObject initPanel;
 
@@ -27,6 +29,9 @@ public class Creator : MonoBehaviour {
 
 	void Start()
 	{
+		string newURL = PlayerPrefs.GetString ("url", URL);
+		urlField.text = newURL;
+		URL = newURL;
 		initPanel.SetActive (false);
 		doorAliens.gameObject.SetActive (false);
 		doorCosmonauta.gameObject.SetActive (false);
@@ -37,6 +42,10 @@ public class Creator : MonoBehaviour {
 		OnSettingsLoaded ();
 		Events.OnPhotoTaken += OnPhotoTaken;
 		ResetDoors ();
+	}
+	public void SaveNewURL()
+	{
+		PlayerPrefs.SetString ("url", urlField.text);
 	}
 	void OnSettingsLoaded()
 	{

@@ -30,25 +30,28 @@ public class State : MonoBehaviour {
 	public virtual void OnFinish() { }
 
 	public void Positionate(Vector3 pos)
-	{
+	{		
 		if (pos.y > limits.x) {
 			pos.y = -limits.x;
-			pos = Repositionate(pos);
+			pos = Repositionate (pos);
 		} else if (pos.y < -limits.x) {
 			pos.y = limits.x;
-			pos = Repositionate(pos);
+			pos = Repositionate (pos);
 		}
 		if (pos.x > limits.y) {
 			pos.x = -limits.y;
-			pos = Repositionate(pos);
+			pos = Repositionate (pos);
 		} else if (pos.x < -limits.y) {
 			pos.x = limits.y;
-			pos = Repositionate(pos);
+			pos = Repositionate (pos);
 		}
 		transform.localPosition = pos;
 	}
 	Vector3 Repositionate(Vector3 pos)
 	{
+		if (character.states.state == StatesManager.states.LIGHTTRIP) {
+			return new Vector3 (0, 1000, 0);
+		}
 		int rand = Random.Range (0, 3);
 		if (rand == 1) {
 			pos.x /= 1.5f;
