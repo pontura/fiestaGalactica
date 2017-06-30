@@ -8,7 +8,8 @@ public class Robot : MonoBehaviour {
 	bool started;
 	float randomX;
 	private Transform target;
-
+	Texture2D[] textures;
+	int id = 0;
 	void Start()
 	{		
 		gameObject.SetActive (false);
@@ -19,17 +20,26 @@ public class Robot : MonoBehaviour {
 		photos = null;
 	}
 	int robotID;
-	public void Init(Texture2D[] textures, Transform camera, int robotID)
+	public void Init(Texture2D[] _textures, Transform camera, int robotID)
 	{	
+		textures = _textures;
 		this.robotID = robotID;
 		target = camera;
-		int id = 0;
+
+		id = robotID*3;
+		Invoke("StartAnim", robotID*5);	
+		SetPhotos ();
+	}
+	void SetPhotos()
+	{		
+		if (textures.Length == 0)
+			return;
 		foreach (MeshRenderer mr in photos) {
+			if (textures.Length <= id)
+				id = 0;
 			mr.material.mainTexture = textures [id];
 			id++;
 		}
-		//float rand = (float)Random.Range (0, 100) / 10;
-		Invoke("StartAnim", robotID*5);	
 	}
 	void StartAnim()
 	{

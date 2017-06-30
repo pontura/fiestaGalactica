@@ -6,15 +6,20 @@ public class SpecialEffectsManager : MonoBehaviour {
 
 	public int timeToHappen = 60;
 	public int MinCharacters = 10;
+
 	public Robots robots;
+	public Estacion estacion;
+
 	private int sec = 0;
 	private CharactersManager characterManager;
 	public Transform mainCamera;
 	bool isOn;
 	public LightTrip lightTrip;
+	public World world;
 
 	void Start () {
 		robots.gameObject.SetActive (false);
+		estacion.gameObject.SetActive (false);
 		characterManager = GetComponent<CharactersManager> ();
 		Restart ();
 		Loop ();
@@ -40,20 +45,39 @@ public class SpecialEffectsManager : MonoBehaviour {
 	{
 		isOn = true;
 		Events.OnSpecialEffect ();
-		StartCoroutine (InitRobot ());
+		if(world.id == 3)
+			StartCoroutine (InitRobot ());
+		else
+			StartCoroutine (InitEstacion ());
+	}
+	IEnumerator InitEstacion()
+	{	
+		estacion.gameObject.SetActive (true);
+		Texture2D[] list = new Texture2D[characterManager.all.Count];
+		for(int a=0; a<characterManager.all.Count; a++ )
+			list [a] = characterManager.all[a];
+		estacion.Init (list, mainCamera);
+		yield return new WaitForSeconds (25);
+		Events.OnLightTrip (true);
+		yield return new WaitForSeconds (2);
+		estacion.Reset ();
+		estacion.gameObject.SetActive (false);
+		world.OnChange ();
+		yield return new WaitForSeconds (60);
+		Restart ();
 	}
 	IEnumerator InitRobot()
 	{	
 		robots.gameObject.SetActive (true);
-		Texture2D[] list = new Texture2D[4];
+		Texture2D[] list = new Texture2D[characterManager.all.Count];
 		for(int a=0; a<characterManager.all.Count; a++ )
 			list [a] = characterManager.all[a];
 		robots.Init (list, mainCamera);
-		list = null;
 		yield return new WaitForSeconds (25);
 		Events.OnLightTrip (true);
 		yield return new WaitForSeconds (1);
 		robots.gameObject.SetActive (false);
+		world.OnChange ();
 		yield return new WaitForSeconds (60);
 		Restart ();
 	}

@@ -109,6 +109,7 @@ GameObject:
   - component: {fileID: 114274011576035878}
   - component: {fileID: 114947017875884820}
   - component: {fileID: 114142378801825138}
+  - component: {fileID: 114440821132897838}
   m_Layer: 0
   m_Name: Alien 3
   m_TagString: Untagged
@@ -779,7 +780,22 @@ MonoBehaviour:
   photo: {fileID: 114680834113881592}
   special: {fileID: 114142378801825138}
   launch: {fileID: 114947017875884820}
+  lightTrip: {fileID: 114440821132897838}
   activeState: {fileID: 0}
+--- !u!114 &114440821132897838
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1235121489029636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76d6e3b93481c354cb4ac7c10a72e711, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 0}
+  character: {fileID: 0}
+  speed: 60
 --- !u!114 &114477910021788710
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -866,7 +882,7 @@ MonoBehaviour:
   anim: {fileID: 0}
   character: {fileID: 0}
   speed: 2
-  floatSpeed: 0.2
+  floatSpeed: 0
   rotate: 0
   flyType: 0
 --- !u!114 &114947017875884820

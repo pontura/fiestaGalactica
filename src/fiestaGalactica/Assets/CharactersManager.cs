@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CharactersManager : MonoBehaviour {
 
+	public int MaxPhotosToSave;
 	public List<Texture2D> all;
 	public Transform propulsorAliens;
 	public Transform propulsorCosmonautas;
@@ -116,7 +117,12 @@ public class CharactersManager : MonoBehaviour {
 		if (file != null) {
 			texture = file.texture;
 			all.Add (texture);
+			if (all.Count >= MaxPhotosToSave) {
+				GameObject.DestroyImmediate (all [0]);
+				all.RemoveAt (0);
+			}
 		}
+
 		//Sprite sprite = Sprite.Create(texture as Texture2D, new Rect(0, 0, texture.width, texture.height), Vector2.zero);
 
 		if (newCharacter != null) {

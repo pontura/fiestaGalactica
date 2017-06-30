@@ -210,6 +210,7 @@ GameObject:
   - component: {fileID: 114252140726117872}
   - component: {fileID: 114252825980640198}
   - component: {fileID: 114878635456916646}
+  - component: {fileID: 114721443372592400}
   m_Layer: 0
   m_Name: Alien 4
   m_TagString: Untagged
@@ -640,7 +641,7 @@ MonoBehaviour:
   anim: {fileID: 0}
   character: {fileID: 0}
   speed: 2
-  floatSpeed: 0.2
+  floatSpeed: 0
   rotate: 0
   flyType: 0
 --- !u!114 &114284993843651634
@@ -676,6 +677,20 @@ MonoBehaviour:
   styles: {fileID: 114284993843651634}
   states: {fileID: 114981033016144356}
   url: 
+--- !u!114 &114721443372592400
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1801953437158734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76d6e3b93481c354cb4ac7c10a72e711, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 0}
+  character: {fileID: 0}
+  speed: 60
 --- !u!114 &114869198521233954
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -736,6 +751,7 @@ MonoBehaviour:
   photo: {fileID: 114252140726117872}
   special: {fileID: 114878635456916646}
   launch: {fileID: 114252825980640198}
+  lightTrip: {fileID: 114721443372592400}
   activeState: {fileID: 0}
 --- !u!135 &135405028059050402
 SphereCollider:

@@ -62,6 +62,7 @@ GameObject:
   - component: {fileID: 114357640287488814}
   - component: {fileID: 114965118010238260}
   - component: {fileID: 114289892162546956}
+  - component: {fileID: 114071825717198638}
   m_Layer: 0
   m_Name: Alien 2
   m_TagString: Untagged
@@ -746,9 +747,23 @@ MonoBehaviour:
   anim: {fileID: 0}
   character: {fileID: 0}
   speed: 2
-  floatSpeed: 0.2
+  floatSpeed: 0
   rotate: 0
   flyType: 0
+--- !u!114 &114071825717198638
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1088075673980606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76d6e3b93481c354cb4ac7c10a72e711, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 0}
+  character: {fileID: 0}
+  speed: 60
 --- !u!114 &114112222981147360
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -825,6 +840,7 @@ MonoBehaviour:
   photo: {fileID: 114290797848792820}
   special: {fileID: 114289892162546956}
   launch: {fileID: 114965118010238260}
+  lightTrip: {fileID: 114071825717198638}
   activeState: {fileID: 0}
 --- !u!114 &114429921727364880
 MonoBehaviour:

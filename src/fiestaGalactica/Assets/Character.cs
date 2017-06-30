@@ -22,12 +22,12 @@ public class Character : MonoBehaviour {
 	}
 	void Start()
 	{
-#if UNITY_IPHONE
+//#if UNITY_IPHONE
 		head.transform.localEulerAngles = new Vector3(0,180,-90);
 		Vector3 scale = head.transform.localScale;
 		scale.y *= -1;
 		head.transform.localScale = scale;
-#endif
+//#endif
 	}
 	void OnDestroy()
 	{

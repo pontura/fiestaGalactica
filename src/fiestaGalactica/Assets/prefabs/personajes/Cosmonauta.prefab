@@ -224,6 +224,7 @@ GameObject:
   - component: {fileID: 114729101710430884}
   - component: {fileID: 114230103446289998}
   - component: {fileID: 114411297858434904}
+  - component: {fileID: 114566789965022240}
   m_Layer: 0
   m_Name: Cosmonauta
   m_TagString: Untagged
@@ -769,9 +770,23 @@ MonoBehaviour:
   anim: {fileID: 0}
   character: {fileID: 0}
   speed: 2
-  floatSpeed: 1
+  floatSpeed: 0
   rotate: 0
   flyType: 0
+--- !u!114 &114566789965022240
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1621648837918100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76d6e3b93481c354cb4ac7c10a72e711, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 0}
+  character: {fileID: 0}
+  speed: 60
 --- !u!114 &114729101710430884
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -839,6 +854,7 @@ MonoBehaviour:
   photo: {fileID: 114411297858434904}
   special: {fileID: 114230103446289998}
   launch: {fileID: 114729101710430884}
+  lightTrip: {fileID: 114566789965022240}
   activeState: {fileID: 0}
 --- !u!135 &135201543300001888
 SphereCollider:

@@ -19,6 +19,7 @@ public class StatesManager : MonoBehaviour {
 	public StatePhoto photo;
 	public StateSpecial special;
 	public StateLaunch launch;
+	public StateLightTrip lightTrip;
 
 	public State activeState;
 	Character character;
@@ -61,6 +62,9 @@ public class StatesManager : MonoBehaviour {
 		case states.SPECIAL:
 			special.Finish ();
 			break;
+		case states.LIGHTTRIP:
+			lightTrip.Finish ();
+			break;
 		}
 		Reset ();
 		this.state = _state;
@@ -76,6 +80,9 @@ public class StatesManager : MonoBehaviour {
 			launch.Init ();
 			break;
 		case states.LIGHTTRIP:
+			lightTrip.enabled = true;
+			lightTrip.Init ();
+			break;
 		case states.FLY:
 			fly.enabled = true;
 			fly.Init ();
