@@ -8,7 +8,7 @@ public class WebcamPhoto : MonoBehaviour
 	public Texture2D photoTexture;
 	WebCamTexture webCamTexture;
 	private Animation anim;
-
+	public Creator creator;
 	MeshRenderer rawImage;
 
 	private bool photoTaken;
@@ -62,5 +62,6 @@ public class WebcamPhoto : MonoBehaviour
 		webCamTexture.Stop();
 		Events.OnPhotoTaken ();
 		anim.Play ("ZoomOut");
+		creator.PlayAudio (creator.audioPhoto);
 	}
 }

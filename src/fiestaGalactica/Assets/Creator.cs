@@ -6,6 +6,11 @@ using UnityEngine.UI;
 
 public class Creator : MonoBehaviour {
 
+	public AudioSource audioSource;
+	public AudioClip audioButton;
+	public AudioClip audioPhoto;
+	public AudioClip audioCustomizer;
+
 	public InputField urlField;
 	public string URL = "http://192.168.0.6/fiesta/";
 	public GameObject initPanel;
@@ -71,6 +76,7 @@ public class Creator : MonoBehaviour {
 	}
 	public void IntroDone()
 	{
+		PlayAudio (audioButton);
 		Events.CreatorReset ();
 
 		if (characterSelectedID == 0)
@@ -95,10 +101,10 @@ public class Creator : MonoBehaviour {
 			styles.SetActive (true);
 		else
 			stylesAliens.SetActive (true);
-		StartCoroutine (Test ());
 	}
 	public void Create()
 	{
+		PlayAudio (audioPhoto);
 		StartCoroutine (UploadPNG ());
 		startingUI.SetActive (false);
 		styles.SetActive (false);
@@ -107,25 +113,9 @@ public class Creator : MonoBehaviour {
 		CloseDoors ();
 
 	}
-
-	IEnumerator Test()
-	{
-		Debug.Log (URL + "index.php");
-		WWWForm form = new WWWForm();
-		WWW w = new WWW(URL + "index.php", new byte[]{0});
-		yield return w;
-		if (w.error != null)
-		{
-			Debug.Log(w.error);
-		}
-		else
-		{
-			Debug.Log("Borra=");
-			Done ();
-		}
-	}
 	public void NextAlien()
 	{
+		PlayAudio (audioCustomizer);
 		characterSelectedID++;
 		if (characterSelectedID > 3)
 			characterSelectedID = 1;
@@ -133,6 +123,7 @@ public class Creator : MonoBehaviour {
 	}
 	public void PrevAlien()
 	{
+		PlayAudio (audioCustomizer);
 		characterSelectedID--;
 		if (characterSelectedID < 1)
 			characterSelectedID= 3;
@@ -140,6 +131,7 @@ public class Creator : MonoBehaviour {
 	}
 	public void Next()
 	{
+		PlayAudio (audioCustomizer);
 		id++;
 		if (id > totalStyles)
 			id = 1;
@@ -147,6 +139,7 @@ public class Creator : MonoBehaviour {
 	}
 	public void Prev()
 	{
+		PlayAudio (audioCustomizer);
 		id--;
 		if (id < 1)
 			id = totalStyles;
@@ -154,6 +147,7 @@ public class Creator : MonoBehaviour {
 	}
 	public void Next2()
 	{
+		PlayAudio (audioCustomizer);
 		id2++;
 		if (id2 > totalStyles)
 			id2 = 1;
@@ -161,6 +155,7 @@ public class Creator : MonoBehaviour {
 	}
 	public void Prev2()
 	{
+		PlayAudio (audioCustomizer);
 		id2--;
 		if (id2 < 1)
 			id2 = totalStyles;
@@ -204,7 +199,8 @@ public class Creator : MonoBehaviour {
 		ResetDoors ();
 	}
 	void Done()
-	{		
+	{	
+		PlayAudio (audioButton);	
 		//done.SetActive (true);
 		startingUI.SetActive (false);
 		Invoke ("DoneReady", 2);
@@ -222,5 +218,10 @@ public class Creator : MonoBehaviour {
 			doorCosmonauta.ResetCosmonauta ();
 		else
 			doorAliens.ResetAliens ();
+	}
+	public void PlayAudio(AudioClip clip)
+	{
+		audioSource.clip = clip;
+		audioSource.Play ();
 	}
 }
