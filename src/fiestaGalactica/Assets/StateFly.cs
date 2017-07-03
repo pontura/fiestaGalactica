@@ -7,9 +7,12 @@ public class StateFly : State {
 	public float speed;
 	public float floatSpeed;
 
+	public bool onlyWalk;
+
 	public float rotate;
 
 	public flyTypes flyType;
+	bool isOn;
 
 	public enum flyTypes
 	{
@@ -19,16 +22,17 @@ public class StateFly : State {
 
 	public override void OnInit()
 	{
-		if (character.states.state != StatesManager.states.FLY)
-			return;
+		isOn = true;
 		rotate = (float)( Random.Range (0, 400) - 200 ) / 10;
-		if (character.info.type == CharacterInfo.types.ASTRONAUTA) {			
-			CancelInvoke ();
-			Loop ();
-		}		
+
+		CancelInvoke ();
+		Loop ();
+
 	}
 	void Loop()
 	{
+		if (!isOn)
+			return;
 		if (character.states.state != StatesManager.states.FLY)
 			return;
 		if (Random.Range (0, 100) > 50)
@@ -38,12 +42,21 @@ public class StateFly : State {
 	}
 	IEnumerator Flying()
 	{
-		flyType = flyTypes.FLY;
-		anim.Play ("FlightStart");
-		yield return new WaitForSeconds (2);
-		anim.Play ("Flight");
-		yield return new WaitForSeconds (6);
-		Loop ();
+		if (onlyWalk) {
+			flyType = flyTypes.FLY;
+			anim.Play ("Walk");
+			yield return new WaitForSeconds (Random.Range (3, 10));
+			if (flyType == flyTypes.FLY)
+				Loop ();
+		} else {
+			flyType = flyTypes.FLY;
+			anim.Play ("FlightStart");
+			yield return new WaitForSeconds (2);
+			if (isOn && flyType == flyTypes.FLY)
+				anim.Play ("Flight");
+			yield return new WaitForSeconds (6);
+			Loop ();
+		}
 	}
 	IEnumerator Floating()
 	{
@@ -56,8 +69,13 @@ public class StateFly : State {
 	{
 		StopCoroutine (Flying ());
 		StopCoroutine (Floating ());
+		isOn = false;
 	}
 	void Update () {
+		
+		if (!isOn)
+			return;
+		
 		Vector3 pos = transform.localPosition;
 
 		float newSpeed = speed;

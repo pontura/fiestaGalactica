@@ -31,6 +31,9 @@ public class State : MonoBehaviour {
 
 	public void Positionate(Vector3 pos)
 	{		
+		if (character.states.state == StatesManager.states.ABDUCTION) 
+			return;
+		
 		if (pos.y > limits.x) {
 			pos.y = -limits.x;
 			pos = Repositionate (pos);
@@ -48,7 +51,7 @@ public class State : MonoBehaviour {
 		transform.localPosition = pos;
 	}
 	Vector3 Repositionate(Vector3 pos)
-	{
+	{		
 		if (character.states.state == StatesManager.states.LIGHTTRIP) {
 			return new Vector3 (0, 1000, 0);
 		}

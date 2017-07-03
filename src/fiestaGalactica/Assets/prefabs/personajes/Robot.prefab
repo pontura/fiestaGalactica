@@ -355,6 +355,24 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1758879598206922
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4048083002576180}
+  - component: {fileID: 54832749667740616}
+  - component: {fileID: 136430566455540376}
+  - component: {fileID: 114544835232727532}
+  m_Layer: 0
+  m_Name: EstacionConnection (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1771854263473886
 GameObject:
   m_ObjectHideFlags: 1
@@ -511,6 +529,19 @@ Transform:
   m_Father: {fileID: 4571938701058116}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!4 &4048083002576180
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1758879598206922}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: -1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 6.2599998, y: 0.24, z: 4.21}
+  m_Children: []
+  m_Father: {fileID: 4913338778046564}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4148895671143252
 Transform:
   m_ObjectHideFlags: 1
@@ -873,6 +904,7 @@ Transform:
   - {fileID: 4376417427972970}
   - {fileID: 4571938701058116}
   - {fileID: 4944643237326520}
+  - {fileID: 4048083002576180}
   m_Father: {fileID: 4714866510214128}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1073,6 +1105,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1483308691028282}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &54832749667740616
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1758879598206922}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!95 &95450856359840878
 Animator:
   serializedVersion: 3
@@ -1121,6 +1168,31 @@ MonoBehaviour:
   - {fileID: 23745954171749042}
   - {fileID: 23688389175212086}
   - {fileID: 23024770547661270}
+--- !u!114 &114544835232727532
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1758879598206922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a380fe59f7610f4c95e223716a6c4cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isEstacion: 0
+--- !u!136 &136430566455540376
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1758879598206922}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 42
+  m_Direction: 1
+  m_Center: {x: 0, y: 14.3, z: 0}
 --- !u!198 &198010043438187358
 ParticleSystem:
   m_ObjectHideFlags: 1

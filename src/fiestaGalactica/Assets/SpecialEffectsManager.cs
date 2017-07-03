@@ -76,6 +76,7 @@ public class SpecialEffectsManager : MonoBehaviour {
 		yield return new WaitForSeconds (25);
 		Events.OnLightTrip (true);
 		yield return new WaitForSeconds (1);
+		robots.Reset ();
 		robots.gameObject.SetActive (false);
 		world.OnChange ();
 		yield return new WaitForSeconds (60);
