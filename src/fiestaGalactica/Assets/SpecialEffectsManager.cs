@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class SpecialEffectsManager : MonoBehaviour {
 
-	public int timeToHappen = 60;
-	public int MinCharacters = 10;
+	public int timeToHappenFrom;
+	public int timeToHappenTo;
+	public int MinCharacters;
 
 	public Robots robots;
 	public Estacion estacion;
@@ -16,8 +17,10 @@ public class SpecialEffectsManager : MonoBehaviour {
 	bool isOn;
 	public LightTrip lightTrip;
 	public World world;
+	int timeToHappen;
 
 	void Start () {
+		timeToHappen = Random.Range (timeToHappenFrom, timeToHappenTo);
 		robots.gameObject.SetActive (false);
 		estacion.gameObject.SetActive (false);
 		characterManager = GetComponent<CharactersManager> ();
@@ -36,6 +39,7 @@ public class SpecialEffectsManager : MonoBehaviour {
 			if (sec >= timeToHappen) {
 				if (characterManager.all.Count > MinCharacters) {
 					Init ();
+					timeToHappen = Random.Range (timeToHappenFrom, timeToHappenTo);
 				}
 			}
 		}

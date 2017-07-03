@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CharactersManager : MonoBehaviour {
 
-	public int MaxPhotosToSave;
 	public List<Texture2D> all;
 	public Transform propulsorAliens;
 	public Transform propulsorCosmonautas;
@@ -24,6 +23,7 @@ public class CharactersManager : MonoBehaviour {
 		Events.OnNewFile += OnNewFile;
 		Events.OnRemoveCharacters += OnRemoveCharacters;
 		Events.OnConnectCharacters += OnConnectCharacters;
+		Events.OnLightTrip += OnLightTrip;
 	}
 	void Update()
 	{
@@ -47,7 +47,11 @@ public class CharactersManager : MonoBehaviour {
 
 		OnAddCharacter (file, characterID, style1, style2, imageName);
 	}
-
+	void OnLightTrip(bool isOn)
+	{
+		if (!isOn)
+			DeleteRandomCharacters ();
+	}
 	void OnRemoveCharacters()
 	{
 		Invoke ("UpdateCharacters", 1);
@@ -62,9 +66,27 @@ public class CharactersManager : MonoBehaviour {
 			}
 		}
 		for (int a = 0; a < charactersToDelete.Count; a++) {
-			Destroy (charactersToDelete [a].gameObject);
+			DestroyImmediate (charactersToDelete [a].gameObject);
 		}
 		charactersToDelete.Clear ();
+		characters = null;
+	}
+	void DeleteRandomCharacters()
+	{
+		Character[] characters = container.GetComponentsInChildren<Character> ();
+		if (characters.Length > 0) {
+			charactersToDelete.Clear ();
+			for (int a=0; a<characters.Length; a++) {
+				if (Random.Range(0,100)<50) {
+					charactersToDelete.Add (characters[a]);
+				}
+			}
+			for (int a = 0; a < charactersToDelete.Count; a++) {
+				DestroyImmediate (charactersToDelete [a].gameObject);
+			}
+			charactersToDelete.Clear ();
+			characters = null;
+		}
 	}
 	bool IsCharacterStillOnList(string userName)
 	{
@@ -117,7 +139,7 @@ public class CharactersManager : MonoBehaviour {
 		if (file != null) {
 			texture = file.texture;
 			all.Add (texture);
-			if (all.Count >= MaxPhotosToSave) {
+			if (all.Count >= Data.Instance.photosManager.totalImages) {
 				GameObject.DestroyImmediate (all [0]);
 				all.RemoveAt (0);
 			}

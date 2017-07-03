@@ -25,7 +25,6 @@ public class Config : MonoBehaviour
 	public void LoadDataromServer(string json_data)
 	{
 		var Json = SimpleJSON.JSON.Parse(json_data);
-		print (Json.Count);
 		fillArray(Json);
 	}
 	private void fillArray(JSONNode content)
