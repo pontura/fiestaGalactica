@@ -20,6 +20,13 @@ public class Character : MonoBehaviour {
 		Events.OnSpecialEffect += OnSpecialEffect;
 		Events.OnLightTrip += OnLightTrip;
 	}
+	void OnDestroy()
+	{
+		Events.OnSpecialEffect -= OnSpecialEffect;
+		Events.OnLightTrip -= OnLightTrip;
+		states = null;
+		c = null;
+	}
 	void Start()
 	{
 //#if UNITY_IPHONE
@@ -29,12 +36,10 @@ public class Character : MonoBehaviour {
 		head.transform.localScale = scale;
 //#endif
 	}
-	void OnDestroy()
-	{
-		Events.OnSpecialEffect -= OnSpecialEffect;
-	}
 	void OnLightTrip(bool isOn)
 	{
+		if (states == null)
+			return;
 		if(isOn)
 			states.ChangeState (StatesManager.states.LIGHTTRIP);
 		else

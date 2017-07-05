@@ -10,9 +10,8 @@ public class World : MonoBehaviour {
 	public GameObject level3;
 
 	void Start () {
-		id = 1;
 		Reset ();
-		SetActive (1);
+		SetActive (id);
 	}
 	void SetActive(int id)
 	{

@@ -12,7 +12,8 @@ public class StatesManager : MonoBehaviour {
 		CONNECT,
 		PHOTO,
 		SPECIAL,
-		LIGHTTRIP
+		LIGHTTRIP,
+		ABDUCTION
 	}
 	public StateFly fly;
 	public StateConnected connect;
@@ -20,6 +21,7 @@ public class StatesManager : MonoBehaviour {
 	public StateSpecial special;
 	public StateLaunch launch;
 	public StateLightTrip lightTrip;
+	public StateAbduction abduction;
 
 	public State activeState;
 	Character character;
@@ -39,6 +41,8 @@ public class StatesManager : MonoBehaviour {
 		photo.enabled = false;
 		launch.enabled = false;
 		special.enabled = false;
+		abduction.enabled = false;
+		lightTrip.enabled = false;
 	}
 	public void ChangeState(states _state)
 	{
@@ -46,6 +50,10 @@ public class StatesManager : MonoBehaviour {
 			//return;
 		
 		switch (state) {
+		 
+		case states.ABDUCTION:
+			abduction.Finish ();
+			break;
 
 		case states.LAUNCH:
 			launch.Finish ();
@@ -71,6 +79,10 @@ public class StatesManager : MonoBehaviour {
 
 
 		switch (state) {
+		case states.ABDUCTION:
+			abduction.enabled = true;
+			abduction.Init ();
+			break;
 		case states.PHOTO:
 			photo.enabled = true;
 			photo.Init ();

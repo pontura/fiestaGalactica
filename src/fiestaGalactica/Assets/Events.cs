@@ -12,6 +12,7 @@ public static class Events {
 
 	public static System.Action OnRemoveCharacters = delegate { };
 
+	public static System.Action<Character> OnAbduction= delegate { };
 	public static System.Action OnPhotoTaken= delegate { };
 	public static System.Action<int, int> ChangeStyle = delegate { };
 	public static System.Action<int> ChangeAlien = delegate { };
