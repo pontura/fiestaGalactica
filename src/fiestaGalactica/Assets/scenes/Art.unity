@@ -212,7 +212,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &255133178
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -497,7 +497,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1726353425776134, guid: 5b6eda90f35cda345b9d475afd0cc3fc, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1486162983630622, guid: 5b6eda90f35cda345b9d475afd0cc3fc, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5b6eda90f35cda345b9d475afd0cc3fc, type: 2}
@@ -798,7 +802,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1100952965934060, guid: e2d39fb5a27336b45b7e3c9ded802ba2, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1821279532251642, guid: e2d39fb5a27336b45b7e3c9ded802ba2, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e2d39fb5a27336b45b7e3c9ded802ba2, type: 2}
@@ -888,6 +896,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 1936926637558450, guid: 3558955f6cfc445479674f168a0cb836, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3558955f6cfc445479674f168a0cb836, type: 2}
   m_IsPrefabParent: 0
@@ -931,6 +943,10 @@ Prefab:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1235121489029636, guid: 3964a9495f1f598408088ef44bb8146a, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1179178799696900, guid: 3964a9495f1f598408088ef44bb8146a, type: 2}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -1063,16 +1079,6 @@ Prefab:
     - target: {fileID: 4196439033581122, guid: 371b16cececcc0b46800a971993063a5, type: 2}
       propertyPath: m_RootOrder
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 198391091451778124, guid: 371b16cececcc0b46800a971993063a5,
-        type: 2}
-      propertyPath: randomSeed
-      value: -1474010217
-      objectReference: {fileID: 0}
-    - target: {fileID: 198746186982411968, guid: 371b16cececcc0b46800a971993063a5,
-        type: 2}
-      propertyPath: randomSeed
-      value: 1816210006
       objectReference: {fileID: 0}
     - target: {fileID: 1621648837918100, guid: 371b16cececcc0b46800a971993063a5, type: 2}
       propertyPath: m_IsActive
