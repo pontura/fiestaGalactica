@@ -19,6 +19,7 @@ public class Explotion: MonoBehaviour {
 			theID++;
 		}
 		Invoke ("Reset", 2);
+		Events.OnFireworks ((int)transform.position.x);
 	}
 	void Reset()
 	{

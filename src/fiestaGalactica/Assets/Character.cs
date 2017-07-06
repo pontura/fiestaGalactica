@@ -26,6 +26,9 @@ public class Character : MonoBehaviour {
 		Events.OnLightTrip -= OnLightTrip;
 		states = null;
 		c = null;
+		styles = null;
+		head = null;
+		info = null;
 	}
 	void Start()
 	{
@@ -58,10 +61,17 @@ public class Character : MonoBehaviour {
 		head.material.mainTexture = info.texture2d;
 
 	}
-	void Updatess()
+	public void SFXAlien3Walk()
 	{
-		if(lookAtCamera)
-			transform.LookAt (c.gameObject.transform);
+		Events.OnSFXAction ("SFXAlien3Walk");
+	}
+	public void SFXAlien1Float()
+	{
+		Events.OnSFXAction ("SFXAlien1Float");
+	}
+	public void SFXAlien1Walk()
+	{
+		Events.OnSFXAction ("SFXAlien1Walk");
 	}
 
 }

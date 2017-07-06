@@ -25,6 +25,8 @@ public class State : MonoBehaviour {
 	void OnDestroy()
 	{
 		StopAllCoroutines ();
+		character = null;
+		anim = null;
 	}
 	public void Finish()
 	{

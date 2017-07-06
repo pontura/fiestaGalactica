@@ -125,7 +125,7 @@ public class CharactersManager : MonoBehaviour {
 		}
 		newCharacter.url = imageName;
 		newCharacter.transform.SetParent (container);
-
+		Events.OnLaunch (newCharacter.info.type);
 		Vector3 pos;
 		if(newCharacter.info.type == CharacterInfo.types.ASTRONAUTA)
 			pos = propulsorCosmonautas.transform.position;

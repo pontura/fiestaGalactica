@@ -22,7 +22,7 @@ public class Estacion : MonoBehaviour {
 	}
 	void OnAbduction(Character ch)
 	{
-		speed /= 2;
+		speed = speedDefault/2;
 		SetPhotos ();
 	}
 	void OnLightTrip(bool _isLightTrip)

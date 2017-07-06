@@ -51,6 +51,7 @@ public class StateFly : State {
 		} else {
 			flyType = flyTypes.FLY;
 			anim.Play ("FlightStart");
+			Events.OnSFXAction ("cosmonautaImpulsa");
 			yield return new WaitForSeconds (2);
 			if (isOn && flyType == flyTypes.FLY)
 				anim.Play ("Flight");

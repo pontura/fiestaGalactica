@@ -22,7 +22,7 @@ public class PhotosManager : MonoBehaviour {
 	void Loop()
 	{
 		GetAllFiles ();
-		Invoke ("Loop", 2);
+		Invoke ("Loop", 3);
 	}
 	void GetAllFiles()
 	{
@@ -82,7 +82,6 @@ public class PhotosManager : MonoBehaviour {
 			if (Data.Instance.build != Data.builds.DEBUG) {
 				var url = PHOTOS_URL + "deleteImage.php?imageName=" + imageName;
 				WWW www = new WWW (url);
-				Debug.Log ("Delete: " + imageName);
 			}
 		} else {
 			yield return null;

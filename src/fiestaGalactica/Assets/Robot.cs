@@ -29,6 +29,7 @@ public class Robot : MonoBehaviour {
 		id = robotID*3;
 		Invoke("StartAnim", robotID*5);	
 		SetPhotos ();
+		timer = 0;
 	}
 	void SetPhotos()
 	{		
@@ -53,13 +54,26 @@ public class Robot : MonoBehaviour {
 			randomX = 0;
 		//randomX = (float)(Random.Range (0, 100)-50)/100;
 	}
+	float timer = 0;
 	void Update()
 	{
-		transform.LookAt (target);
+		
 		if (!started)
 			return;
+
+		timer += Time.deltaTime;
+		if (timer > 1) {
+			Events.OnRobotStep ((int)randomX);
+			timer = 0;
+		}
+		transform.LookAt (target);
+
 		Vector3 pos = transform.position;
 		pos.x += randomX*Time.deltaTime;
 		transform.position = pos;
+	}
+	public void RobotStep()
+	{
+		Events.OnRobotStep ((int)transform.position.x);
 	}
 }

@@ -10,6 +10,12 @@ public static class Events {
 	public static System.Action OnGameOver = delegate { };
 	public static System.Action<WWW> OnNewFile = delegate { };
 
+	public static System.Action<CharacterInfo.types> OnLaunch = delegate { };
+	public static System.Action<int> OnFireworks = delegate { };
+	public static System.Action<int> OnRobotStep = delegate { };
+	public static System.Action<int> OnHands = delegate { };
+	public static System.Action OnMusic = delegate { };
+
 	public static System.Action OnRemoveCharacters = delegate { };
 
 	public static System.Action<Character> OnAbduction= delegate { };
@@ -20,4 +26,6 @@ public static class Events {
 	public static System.Action<bool> OnLightTrip = delegate { };
 	public static System.Action CreatorReset = delegate { };
 	public static System.Action OnSpecialEffect = delegate { };
+	//public static System.Action<AudioClip, int> OnSFX = delegate { };
+	public static System.Action<string> OnSFXAction = delegate { };
 }

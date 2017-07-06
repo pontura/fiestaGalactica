@@ -1,0 +1,161 @@
+﻿body
+	{
+		margin:0;
+		padding:0;
+		font-family: "Georgia", Arial, Verdana, Arial, sans-serif;
+		margin:auto;
+		font-size:16px;
+		color:#000000;
+		background-image:url('../images/interface/blackWhite.png');
+		background-position:center top; 
+   		line-height: 1.7;
+	}
+	.all
+	{
+		max-width:900px;
+		margin:auto;
+	}
+	.menu {
+		background-color: #000;
+		float: left;
+		margin-left: 20px;
+		position: absolute;
+		width: 230px;
+		height: 100%;
+	}
+	.menuSmall {
+		font-size: 14px;
+		line-height: 1.7;
+	}
+	.tags
+	{
+		font-size:22px;
+	}
+	ul
+	{
+		text-decoration:none;
+		margin:0px;
+		padding:0px;
+	}
+	li 
+	{
+		display:block;
+		padding:0px;
+		margin-bottom:3px;		
+	} 
+	li a
+	{
+		padding:0 5px;	
+	}
+
+
+	.content {
+		background-color: #fff;
+		display: block;
+		float: left;
+		margin-left: 230px;
+		max-width: 600px;
+		overflow: visible;
+		padding-left: 46px;
+		padding-top: 65px;
+		position: absolute;
+	}
+	.ContentLine
+	{
+		float:left;
+		width:100%;
+		margin-bottom:22px;
+	}
+
+	a {
+		background-color: #000;
+		color: #ffffff;
+		font-weight: 400;
+		text-decoration: none;
+	}
+	a:hover
+	{
+		text-decoration:none;
+		background-color:#FF0000;
+	}
+	.selected
+	{
+		background-color:#FF0000;
+	}
+	.title
+	{
+		margin-top:50px;
+	}
+	h1
+	{
+		font-size:36px;
+		font-weight:800;
+		margin-top:0px;
+		margin-bottom:30px;
+    		line-height: 1.2em;
+	}
+	p
+	{
+		
+	}
+	h2
+	{
+		font-size:22px;
+		font-weight:800;
+		margin-top:0px;
+		margin-bottom:10px;
+	}
+	h3
+	{
+		font-size:18px;
+		font-weight:800;
+		margin-top:0px;
+		margin-bottom:8px;
+	}
+	p
+	{
+		font-size:16px;
+		font-weight:400;
+		margin-top:4px;
+		margin-bottom:10px;
+	}
+	.work
+	{
+		float:left;
+		margin-bottom: 55px;
+	}
+	img
+	{
+		float:left;
+		margin-bottom: 12px;
+		margin-right: 22px;
+	}
+	.video
+	{
+		float:left;
+		margin-right: 22px;
+	}
+	.social {
+		float:left;
+		margin-top:20px;
+		width:150px;
+	}
+	.social li{
+		float:left;
+	}
+	.social li a{
+		padding:0px;
+	}
+	.social li a img{
+		margin-right:0px;
+	}
+	.footer {
+		float:left;
+		color: #888;
+		margin: 5px;
+		margin-top:10px;
+	}
+	.footer li
+	{
+		font-size: 14px;
+	}

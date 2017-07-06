@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LightTrip : MonoBehaviour {
 
+	public GameObject ufoLaunch;
 	public GameObject asset;
 	public ParticleSystem[] particles;
 
@@ -14,8 +15,12 @@ public class LightTrip : MonoBehaviour {
 
 	public void OnLightTrip(bool isOn)
 	{
-		if(isOn)
+		if (isOn) {
+			ufoLaunch.SetActive (false);
 			StartCoroutine (Animate ());
+		} else {
+			ufoLaunch.SetActive (true);
+		}
 	}
 	IEnumerator Animate()
 	{
@@ -24,7 +29,7 @@ public class LightTrip : MonoBehaviour {
 		foreach (ParticleSystem ps in particles)
 			ps.Play ();
 
-		yield return new WaitForSeconds (20);
+		yield return new WaitForSeconds (10);
 
 		asset.GetComponent<Animation> ().Play ("end");
 		foreach (ParticleSystem ps in particles)
